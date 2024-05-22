@@ -1,0 +1,105 @@
+@media only  screen and (max-width: 1023px) {
+    .real .real-top .real-item-2 .real-item-row {
+        width: calc(50% - 20px);
+    }
+    .real .real-mid  {
+        flex-direction: column;
+    }
+    .real .real-mid .real-mid-flex {
+        width: 100%;
+    }
+    .real .real-bottom {
+        flex-direction: column;
+    }
+    .real .real-bottom .real-bottom-flex {
+        width: 100%;
+    }
+    .content-table {
+        font-size: 0.8em;
+     }
+}
+@media only  screen and (max-width: 768px) {
+    .navigation {
+        width: 80px;
+        border-left: none;
+    }
+    .navigation ul li a .title {
+        display: none;
+    }
+    main {
+        width: calc(100% - 80px);
+        left: 80px;
+    }
+    .real .real-top .real-item-2 .real-item-row {
+        width: calc(50% - 20px);
+    }
+    .navigation ul li .logo {
+        overflow: hidden;
+        justify-content: start;
+        margin-left: 25px;
+    }
+    .navigation ul li .logo img {
+        clip-path: polygon(0 0, 30% 0, 20% 100%, 0 100%);
+    }
+    .filter .filter-brg {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .filter .filter-left {
+        width: 100%;
+    }
+    .filter .filter-left select {
+        width: 100%;
+    }
+    .filter .filter-left select.select-low-high {
+        margin-left: 0 !important;
+        margin-top: 10px;
+      }
+    .filter .filter-right {
+        width: 100%;
+    }
+    .filter .filter-right .search {
+        width: calc(100% - 10% - 35%);
+    }
+    .filter .filter-right .refresh{
+        width: calc(100% - 90%);
+    }
+    .filter .filter-right .add {
+        width: calc(100% - 65%);
+    }
+    .group {
+        max-width: 100%;
+    }
+    .filter .filter-right .add {
+        padding: 15px;
+    }
+    .filter .filter-right .add .add-sv .fa-circle-plus {
+        margin-right: 5px;
+    }
+    
+ }
+ @media only  screen and (max-width: 600px) { 
+    .real .real-top .real-item-2 .real-item-row {
+        width: 100%;
+    }
+    .bottom {
+        font-size: 12px;
+    }
+    .real .real-mid .six .six-top .date {
+        width: 150px;
+    }
+ }
+ @media only  screen and (max-width: 480px) {
+    .filter .filter-right {
+        gap: 5px;
+    }
+    .filter .filter-right .add {
+        padding: 4px;
+    }
+    .filter .filter-right .add .add-sv {
+        font-size: 12px;
+    }
+    .filter .filter-right .add .add-sv .fa-circle-plus {
+        margin-right: 3px;
+    }
+ }

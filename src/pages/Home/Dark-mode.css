@@ -1,0 +1,66 @@
+.used {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.theme {
+    --bg-color: #111;
+    --main-color: #fefefe;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--bg-color);
+    border-radius: 100%;
+    border: 2px solid var(--main-color);
+  }
+  
+  .input-cb {
+    cursor: pointer;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    opacity: 0;
+  }
+  
+  .ic {
+    position: absolute;
+    top: calc(50% -10px);
+    left: calc(50% -10px);
+    width: 20px;
+    height: 20px;
+  }
+  
+  .ic.icon-moon {
+    fill: var(--main-color);
+  }
+  
+  .ic.icon-sun {
+    stroke: var(--main-color);
+    display: none;
+  }
+  
+  .input-cb:checked ~ .ic.icon-sun {
+    display: block;
+  }
+  
+  .input-cb:checked ~ .ic.icon-moon {
+    display: none;
+  }
+  .theme:active {
+    box-shadow: 0px 0px var(--main-color);
+    transform: translate(3px, 3px);
+  }
+  main .topbar .used .select-bar {
+    background: #f4f2f2;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+  main .topbar .used .select-bar:focus {
+    outline: none;
+  }

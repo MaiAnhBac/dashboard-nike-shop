@@ -1,0 +1,334 @@
+.topbar
+{
+    background: var(--brg-topbar);
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    border-bottom: 1px solid var(--brg);
+    color: var(--text);
+}
+.toggle
+{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.75em;
+    cursor: pointer;
+}
+h3{
+    font-size: 16px;
+    margin-right: -0rem;
+    text-transform: uppercase;
+    display: inline-block;
+    vertical-align: middle;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+:root
+{
+    --brg-main : #f4f2f2;
+    --text-color: #878a99;
+    --brg-row: #fff;
+    --title: #333;
+}
+body {
+    transition: all 0.5s ease;
+    font-family: 'Poppins', sans-serif;
+}
+body.dark-mode {
+    --brg-main: #27292c;
+    --text-color: #fcfcfc;
+    --brg-row: #343a40;
+    --title: #fff;
+}
+.real {
+    padding: 20px;
+    background: var(--brg-main);
+    height: calc(100% - 60px);
+}
+.real .real-top .real-item-1 {
+    display: flex;
+    justify-content: space-between;
+}
+.real .real-top .real-item-1 .estate {
+    color: var(--title);
+}
+.real .real-top .real-item-1 .path a, .fa-angle-right {
+    font-size: 14px;
+    color: var(--text-color);
+    margin: 5px;
+}
+.real .real-top .real-item-2 {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px 0;
+}
+.real .real-top .real-item-2 .real-item-row {
+    background: var(--brg-row);
+    width: calc(25% - 20px);
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.real .real-top .real-item-2 .real-item-row .row-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.real .real-top .real-item-2 .real-item-row .row-left .row-title .title-1 {
+    color: var(--text-color);
+    font-size: 14px;
+}
+.real .real-top .real-item-2 .real-item-row .row-left .row-number .number-1 {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--title);
+}
+.real .real-top .real-item-2 .real-item-row .row-left .row-number .fa-arrow-up, .number-up {
+    color: rgba(45, 203, 115);
+    font-size: 12px;
+    font-weight: bold;
+}
+.real .real-top .real-item-2 .real-item-row .row-left .row-number .fa-arrow-down, .number-down {
+    color: rgba(255, 108, 108);
+    font-size: 12px;
+    font-weight: bold;
+}
+.real .real-top .real-item-2 .real-item-row .row-right .progress {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    animation: spin 2s linear forwards; 
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.real .real-top .real-item-2 .real-item-row .row-right .orange {
+    border: 13px solid #ff8c00;
+    border-right: 13px solid transparent;
+}
+.real .real-top .real-item-2 .real-item-row .row-right .light {
+    border: 13px solid #32cd32;
+    border-top: 13px solid transparent; 
+}
+.real .real-top .real-item-2 .real-item-row .row-right .siena {
+    border: 13px solid #a0522d;
+    border-bottom: 13px solid transparent; 
+}
+.real .real-top .real-item-2 .real-item-row .row-right .deep {
+    border: 13px solid #ff1493;
+    border-right: 13px solid transparent; 
+}
+.real .real-top .real-item-2 .real-item-row .row-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.real .real-mid {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.real .real-mid .real-mid-flex {
+    height: 460px;
+    background: var(--brg-row);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 20px;
+    border-radius: 3px;
+}
+.real .real-mid .four {
+    width: calc(33% - 10px);
+}
+.real .real-mid .six {
+    width: calc(67% - 10px);
+    
+}
+.real .real-mid .four .flex-top {
+    display: flex;
+    justify-content: space-between;
+    color: var(--title);
+}
+.real .real-mid .four .flex-top .fa-ellipsis-vertical:hover {
+    cursor: pointer;
+}
+.real .real-mid .four .flex-bottom {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.real .real-mid .six .six-top {
+    display: flex;
+    justify-content: space-between;
+    color: var(--title);
+}
+.real .real-mid .six .six-top .date {
+    border: 1px solid #dbdce3;
+    color: #696b7a;
+    width: 200px;
+}
+.real .real-mid .six .six-top .date:focus {
+    outline: none;
+}
+.real .real-mid .six .six-bottom {
+    width: 100%;
+    height: 100%;
+}
+
+.real .real-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 20px 0;
+}
+.real .real-bottom .real-bottom-flex {
+    height: 550px;
+    background: var(--brg-row);
+    width: calc(50% - 10px);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 20px;
+    border-radius: 3px;
+}
+.real .real-bottom .real-bottom-flex .flex-top {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed #bfccf5;
+    color: var(--title);
+}
+.real .real-bottom .real-bottom-flex .flex-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+#radar-chart {
+    width: 500px !important;
+    height: 500px !important;
+}
+.real .real-bottom .real-bottom-flex .five-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px dashed #bfccf5;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    color: var(--title);
+}
+.real .real-bottom .real-bottom-flex .five-top .select-today {
+    background: #f4f2f2;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+.real .real-bottom .real-bottom-flex .five-top .select-today:focus {
+    outline: none;
+}
+.real .real-bottom .real-bottom-flex .five-bottom {
+    padding: 10px 0;
+}
+.real .real-bottom .real-bottom-flex .five-bottom .status {
+    padding: 20px 0;
+}
+.real .real-bottom .real-bottom-flex .five-bottom .status .status-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.real .real-bottom .real-bottom-flex .five-bottom .status .status-title .title-h3 {
+    font-weight: bold;
+    color: var(--title);
+}
+.real .real-bottom .real-bottom-flex .five-bottom .status .status-title .percent {
+    color: var(--title);
+}
+.real .real-bottom .real-bottom-flex .five-bottom .status .status-horizontal {
+    width: 100%;
+    height: 10px;
+    background: #f0f0f2;
+}
+.real .real-bottom .real-bottom-flex .five-bottom .status .status-horizontal .blue {
+    width: 0;
+    height: 10px;
+    background: rgb(54, 162, 235);
+    animation: blue 1s ease-out forwards;
+}
+@keyframes blue {
+    from {
+        width: 0;
+    }
+    to {
+        width: 89%;
+    }
+}
+.real .real-bottom .real-bottom-flex .five-bottom .status .status-horizontal .pink {
+    width: 0;
+    height: 10px;
+    background: rgb(255, 99, 132);
+    animation: pink 1s ease-out forwards;
+}
+@keyframes pink {
+    from {
+        width: 0;
+    }
+    to {
+        width: 56%;
+    }
+}
+.real .real-bottom .real-bottom-flex .five-bottom .status .status-horizontal .violet {
+    width: 0;
+    height: 10px;
+    background: #BA55D3;
+    animation: violet 1s ease-out forwards;
+}
+@keyframes violet {
+    from {
+        width: 0;
+    }
+    to {
+        width: 94%;
+    }
+}
+.real .real-bottom .real-bottom-flex .five-bottom .status .status-horizontal .yellow {
+    width: 0;
+    height: 10px;
+    background: rgb(255, 205, 86);
+    animation: yellow 1s ease-out forwards;
+}
+@keyframes yellow {
+    from {
+        width: 0;
+    }
+    to {
+        width: 53%;
+    }
+}
+.real .real-bottom .real-bottom-flex .five-bottom .status .status-horizontal .green {
+    width: 0;
+    height: 10px;
+    background: #3CB371;
+    animation: green 1s ease-out forwards;
+}
+@keyframes green {
+    from {
+        width: 0;
+    }
+    to {
+        width: 77%;
+    }
+}
