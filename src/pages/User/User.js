@@ -8,21 +8,28 @@ export default function User() {
     const onDeleteUser = (id) => {
         deleteUser(id)
             .then(() => {
-                toast.success("Xóa người dùng thành công")
+                toast.success("Xóa người dùng thành công");
                 getAllUser()
                     .then((user) => {
                         SetUser(user);
                     })
             })
-            .catch(() => {
-                toast.error("Xóa người dùng thất bại")
-            })
+            .catch((error) => {
+                if (error.response && error.response.status === 401) {
+                    toast.error("Không có quyền xóa ngưởi dùng này.");
+                } else {
+                    toast.error("Xóa người dùng thất bại");
+                }
+            });
     }
     useEffect(() => {
         getAllUser()
             .then((user) => {
                 SetUser(user);
             })
+            .catch((error) => {
+                toast.error("Lỗi khi lấy danh sách người dùng");
+            });
     }, [])
     return (
         <Layout>
