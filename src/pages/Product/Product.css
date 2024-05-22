@@ -280,6 +280,8 @@
       border: 1px solid #ccc;
       margin-bottom: 3px;
       height: 43px;
+      border-radius: 0;
+      background: none;
     }
     .modal-select:focus {
       outline: none;
@@ -310,6 +312,7 @@
       cursor: pointer;
       margin-right: 10px;
       border-radius: 5px;
+      height: 37px;
     }
   
     @keyframes modalFadeIn {
