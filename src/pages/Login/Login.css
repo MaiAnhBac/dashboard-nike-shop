@@ -188,6 +188,9 @@ form  .btn .btn-sign {
     margin-top: 3rem;
     text-align: center;
 }
+.content-box .with .with-account.register-mt {
+    margin-top: 0;
+}
 .content-box .with .with-account .account {
     font-size: 14px;
 }
@@ -211,7 +214,13 @@ form  .btn .btn-sign {
 }
 @media only screen and (max-width: 414px) {
     .content-box{
-        padding: 30px;
+        padding: 20px;
+    }
+    .content-box .title .welcome {
+        font-size: 20px; 
+    }
+    .content-box .title .continue {
+        font-size: 12px;
     }
 }
 

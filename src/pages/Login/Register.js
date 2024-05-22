@@ -50,18 +50,7 @@ export default function Register() {
                     </div>
                 </form>
                 <div className="with">
-                    <div className="with-top">
-                        <div className="horizontal"></div>
-                        <span className="signin-with">Create account with</span>
-                        <div className="horizontal"></div>
-                    </div>
-                    <div className="with-icon">
-                        <a href="" className="fb"><i className="fa-brands fa-facebook-f"></i></a>
-                        <a href="" className="gg"><i className="fa-brands fa-google"></i></a>
-                        <a href="" className="git"><i className="fa-brands fa-github"></i></a>
-                        <a href="" className="twi"><i className="fa-brands fa-twitter"></i></a>                
-                    </div>
-                    <div className="with-account">
+                    <div className="with-account register-mt">
                         <p className="account">Don't have an account ?
                             <NavLink to="/" className="sign-up">Sign In</NavLink>
                         </p>
