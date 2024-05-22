@@ -282,6 +282,7 @@
       height: 43px;
       border-radius: 0;
       background: none;
+      color: #6d6b6b;
     }
     .modal-select:focus {
       outline: none;
