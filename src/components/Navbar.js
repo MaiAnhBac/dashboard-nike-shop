@@ -9,7 +9,7 @@ function Navbar() {
         localStorage.removeItem('user');
         localStorage.removeItem('cart');
         navigate('/')
-        toast.success("Đăng xuất thành công");
+        toast.success("Signed out successfully");
     }
     return ( 
       <div className="container">

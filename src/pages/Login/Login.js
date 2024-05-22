@@ -8,7 +8,7 @@ export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [remember, setRemember] = useState(false)
-
+  const [loading, setLoading] = useState(false)
   const onChangeEmail = (e) => {
     setEmail(e.target.value);
   }
@@ -23,28 +23,32 @@ export default function Login() {
     await login(email, password).then(token => {
       accessToken = token.access_token;
     });
-    if(accessToken) {
-      authorization(accessToken)
-      toast.success("Đăng nhập thành công");
+    if (accessToken) {
+      await authorization(accessToken)
+      toast.success("Logged in successfully");
       navigate('/home')
       if (remember) {
-                localStorage.setItem('rememberMe', 'true');
-                localStorage.setItem('email', email);
-                localStorage.setItem('password', password);
-            }
-            else {
-                localStorage.removeItem('rememberMe')
-                localStorage.removeItem('email')
-                localStorage.removeItem('password')
-            }
+        localStorage.setItem('rememberMe', 'true');
+        localStorage.setItem('email', email);
+        localStorage.setItem('password', password);
+      }
+      else {
+        localStorage.removeItem('rememberMe')
+        localStorage.removeItem('email')
+        localStorage.removeItem('password')
+      }
     }
     else {
-      toast.error("Đăng nhập thất bại");
+      toast.error("Login failed");
     }
   }
-  const onSubmitLogin = async(e) => {
+  const onSubmitLogin = async (e) => {
     e.preventDefault();
-    await api(email, password)
+    setLoading(true)
+    setTimeout(async() => {
+      await api(email, password)
+      setLoading(false)
+    }, 2000)
   }
   useEffect(() => {
     const rememberMeValue = localStorage.getItem('rememberMe') === 'true';
@@ -53,7 +57,7 @@ export default function Login() {
     setEmail(emailValue);
     setPassword(passValue)
     setRemember(rememberMeValue);
-}, [])
+  }, [])
   function changTypePass() {
     let password = document.getElementById('password');
     password.type = password.type == 'text' ? 'password' : 'text';
@@ -89,7 +93,9 @@ export default function Login() {
               <a href="#" className="forgot">Forgot Password?</a>
             </div>
             <div className="btn">
-              <button type='submit' className="btn-sign" id="sign-in">Sign In</button>
+              <button type='submit' className="loader__btn">
+                  {loading ? <div className="loader"></div> : 'Sign In'}
+              </button>
             </div>
           </form>
           <div className="with">

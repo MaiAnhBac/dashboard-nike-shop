@@ -5,7 +5,7 @@ import './Home.css';
 import './Dark-mode.css'
 import '../style/Responsive.css'
 import { getAllUser, getAllCategory, getAllProducts } from '../../data/API'
-
+import { useNavigate } from 'react-router-dom';
 const barchar = [
   {
     name: 'Jan',
@@ -141,6 +141,7 @@ const radarchart = [
 ];
 export default function Home() {
   const userLogin = JSON.parse(localStorage.getItem('user')) || null;
+  const navigate = useNavigate();
   const [product, setProduct] = useState([])
   const [category, setCategory] = useState([])
   const [user, setUser] = useState([])
@@ -158,7 +159,15 @@ export default function Home() {
         setUser(user);
       })
   },[])
+  useEffect(() => {
+    if (userLogin) {
+      navigate('/home')
+    } else {
+      navigate('/')
+    }
+  }, [navigate]);
   return (
+    
     <Layout>
       <div className="topbar">
         <div className="toggle">
@@ -309,7 +318,7 @@ export default function Home() {
                   margin={{
                     top: 10,
                     right: 10,
-                    left: 5,
+                    left: 0,
                     bottom: 20,
                   }}
                 >

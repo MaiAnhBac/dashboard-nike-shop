@@ -63,7 +63,7 @@ export default function Register() {
                     </div>
                     <div className="with-account">
                         <p className="account">Don't have an account ?
-                            <NavLink to="/login" className="sign-up">Sign In</NavLink>
+                            <NavLink to="/" className="sign-up">Sign In</NavLink>
                         </p>
                     </div>
                 </div>

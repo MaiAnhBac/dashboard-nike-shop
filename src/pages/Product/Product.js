@@ -2,25 +2,104 @@ import React, { useEffect, useState } from 'react'
 import Layout from '../../components/Layout'
 import './Product.css';
 import '../style/Responsive.css'
-import { getAllProducts, getAllCategory, getProductsByCate, getSearchProduct, deleteProduct } from '../../data/API'
+import { getAllProducts, getAllCategory, getProductsByCate, getSearchProduct, deleteProduct, createNewProduct } from '../../data/API'
+import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 export default function Product() {
+    const navigate = useNavigate();
+    const { register, handleSubmit, formState: { errors }, } = useForm();
     const [data, setData] = useState([])
     const [category, setCategory] = useState([])
     const [select, setSelect] = useState('');
     const [search, setSearch] = useState('')
+    const [title, setTitle] = useState('')
+    const [price, setPrice] = useState('')
+    const [description, setDescription] = useState('')
+    const [selected, setSelected] = useState(0)
+    const [imageProduct, setImageProduct] = useState('')
     const [lowHight, setLowHight] = useState('default')
+    const [active, setActive] = useState(false);
+    const [loading, setLoading] = useState(false)
+    const onAddProduct = (e) => {
+        setActive(!active)
+    }
+    const onChangeTitle = (e) => {
+        setTitle(e.target.value)
+    }
+    const onChangePrice = (e) => {
+        setPrice(e.target.value)
+    }
+    const onChangeDescription = (e) => {
+        setDescription(e.target.value)
+    }
+    const onChangeSelected = (e) => {
+        setSelected(e.target.value)
+    }
+    const handleChangeImage = (e) => {
+        const formData = new FormData();
+        formData.append("file", e.target.files[0]);
+        async function uploadAvatar() {
+            try {
+                await axios
+                    .post("https://api.escuelajs.co/api/v1/files/upload", formData, {
+                        headers: {
+                            "Content-Type": "multipart/form-data",
+                        },
+                    })
+                    .then((res) => {
+                        setImageProduct([res?.data?.location])
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+
+            }
+            catch (error) {
+                console.log(error);
+            }
+        }
+        uploadAvatar();
+    }
+    const onSubmitProduct = async () => {
+        setLoading(true)
+        setTimeout(async() => {
+            await createNewProduct(title, price, description, selected, imageProduct)
+                .then(() => {
+                    toast.success("Added product successfully")
+                    setActive(false)
+                    setTitle('')
+                    setDescription('')
+                    setPrice('')
+                    setSelected(0)
+                })
+                .catch((Error) => {
+                    toast.error("Adding failed products")
+                })
+            setLoading(false)
+        }, 2000)
+        
+    }
+    const onClickRefresh = (e) => {
+        e.preventDefault();
+        getAllProducts()
+            .then((data) => {
+                setData(data);
+                toast.success("Loading success!")
+            })
+    }
     const onDeleteProduct = (id) => {
         deleteProduct(id)
             .then(() => {
-                toast.success("Xóa sản phẩm thành công")
+                toast.success("Product deletion successful")
                 getAllProducts()
                     .then((data) => {
                         setData(data);
                     })
             })
             .catch(() => {
-                toast.error("Xóa sản phẩm thất bại")
+                toast.error("Delete failed product")
             })
     }
     const onChangeLowHight = (e) => {
@@ -67,6 +146,14 @@ export default function Product() {
                 setCategory(category)
             })
     }, [])
+    useEffect(() => {
+        const userLogin = JSON.parse(localStorage.getItem('user')) || null;
+        if (userLogin) {
+            navigate('/product')
+        } else {
+            navigate('/')
+        }
+    }, [navigate]);
     return (
         <Layout>
             <div className="topbar">
@@ -109,7 +196,7 @@ export default function Product() {
                     <div className="filter-brg">
                         <div className="filter-left">
                             <select name="selName" value={select} onChange={onChangeSelect}>
-                                <option value={0}>Select Category</option>
+                                <option hidden>Select Category</option>
                                 {category.map((cate) => (
                                     <option key={cate.id} value={cate.id}>{cate.name}</option>
                                 ))}
@@ -133,11 +220,11 @@ export default function Product() {
                                     <input className="input" type="search" placeholder="Search product" value={search} onChange={onChangeSearchProduct} />
                                 </div>
                             </div>
-                            <div className="refresh">
-                                <i className="fa-solid fa-arrows-rotate"></i>
+                            <div >
+                                <button className="refresh" onClick={onClickRefresh}><i className="fa-solid fa-arrows-rotate"></i></button>
                             </div>
                             <div className="add">
-                                <a href="" className="add-sv"><i className="fa-solid fa-circle-plus"></i>Add Product</a>
+                                <a className="add-sv" onClick={onAddProduct}><i className="fa-solid fa-circle-plus"></i>Add Product</a>
                             </div>
                         </div>
                     </div>
@@ -149,7 +236,7 @@ export default function Product() {
                                 <tr>
                                     <th>Code</th>
                                     <th>Images</th>
-                                    <th>Products</th>
+                                    <th>Title</th>
                                     <th>Category</th>
                                     <th>Stock</th>
                                     <th>Price</th>
@@ -196,6 +283,49 @@ export default function Product() {
                                 <a href="" className="pages-1">4</a>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div className={active ? "edit-modal js-modal open" : "edit-modal js-modal"}>
+                <div className="modal-container">
+                    <div className="modal-close js-modal-close" onClick={onAddProduct}><i className="fa-solid fa-xmark"></i></div>
+                    <header className="modal-header">Add Product</header>
+                    <div className="modal-body">
+                        <form action="" onSubmit={handleSubmit(onSubmitProduct)}>
+                            <label htmlFor="name" className="modal-label">
+                                Title
+                            </label>
+                            <input {...register('title', { required: true })} id="name" type="text" className="modal-input" placeholder="Title" value={title || ''} onChange={onChangeTitle} />
+                            {errors.title && <p className='notification'>Name is required.</p>}
+                            <label htmlFor="type" className="modal-label">
+                                Description
+                            </label>
+                            <input {...register('description', { required: true })} id="type" type="text" className="modal-input" placeholder="Description" value={description || ''} onChange={onChangeDescription} />
+                            {errors.description && <p className='notification'>Description is required.</p>}
+                            <label htmlFor="status" className="modal-label">
+                                Category
+                            </label>
+                            <select name="select" className='modal-select' value={selected} onChange={onChangeSelected}>
+                                <option hidden value={0} >Select Category</option>
+                                {category.map((cates) => (
+                                    <option key={cates.id} value={cates.id}>{cates.name}</option>
+                                ))}
+                            </select>
+
+                            <label htmlFor="status" className="modal-label">
+                                Price
+                            </label>
+                            <input {...register('price', { required: true })} id="price" type="text" className="modal-input" placeholder="Price" value={price || ''} onChange={onChangePrice} />
+                            {errors.price && <p className='notification'>Price is required.</p>}
+                            <label htmlFor="status" className="modal-label">
+                                Images
+                            </label>
+                            <input {...register('file', { required: true })} id="img-file" type="file" className="modal-input" placeholder="Images" onChange={handleChangeImage} />
+                            {errors.file && <p className='notification'>File is required.</p>}
+                            <button type='submit' className="loader__btn mt">
+                                {loading ? <div className="loader"></div> : 'Save'}
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

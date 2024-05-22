@@ -3,18 +3,26 @@ import './Category.css';
 import Layout from '../../components/Layout'
 import '../style/Responsive.css'
 import { getAllCategory, getCatesByCate } from '../../data/API'
+import { useNavigate } from 'react-router-dom';
 export default function Category() {
+    const navigate = useNavigate();
     const [categories, setCategories] = useState([])
     const [selectCate, setSelectCate] = useState()
     const onChangeSelect = (e) => {
         setSelectCate(e.target.value)
-        getCatesByCate(e.target.value)
-                .then((cate) => {console.log(cate);})
     }
     useEffect(() =>{
         getAllCategory()
             .then(category => setCategories(category))
     }, [])
+    useEffect(() => {
+        const userLogin = JSON.parse(localStorage.getItem('user')) || null;
+        if (userLogin) {
+          navigate('/category')
+        } else {
+          navigate('/')
+        }
+      }, [navigate]);
   return (
     <Layout>
         <div className="topbar">
@@ -57,7 +65,7 @@ export default function Category() {
                 <div className="filter-brg">
                     <div className="filter-left">
                         <select name="selName" value={selectCate} onChange={onChangeSelect}>
-                                <option value="#">Select Category</option>
+                                <option hidden>Select Category</option>
                             {categories.map(cate => (
                                 <option key={cate.id} value={cate.id}>{cate.name}</option>
                             ))}

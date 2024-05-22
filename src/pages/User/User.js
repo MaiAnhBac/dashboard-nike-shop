@@ -1,36 +1,122 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../../components/Layout'
-import { getAllUser, deleteUser } from '../../data/API'
+import { getAllUser, deleteUser, postAddNewUser } from '../../data/API'
 import { toast } from 'react-toastify';
+import axios from 'axios';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 export default function User() {
-    const [user, SetUser] = useState([]);
+    const navigate = useNavigate();
+    const { register, handleSubmit, formState: { errors }, } = useForm();
+    const [user, setUser] = useState([]);
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [role, setRole] = useState('')
+    const [images, setImages] = useState()
+    const [active, setActive] = useState(false);
+    const [loading, setLoading] = useState(false)
+    const onAddUser = () => {
+        setActive(!active)
+    }
+    const onClickRefresh = (e) => {
+        e.preventDefault();
+        getAllUser()
+            .then((user) => {
+                setUser(user);
+                toast.success("Loading success!")
+            })
+    }
+    const onChangeName = (e) => {
+        setName(e.target.value)
+    }
+    const onChangeEmail = (e) => {
+        setEmail(e.target.value)
+    }
+    const onChangePassword = (e) => {
+        setPassword(e.target.value)
+    }
+    const onChangeRole = (e) => {
+        setRole(e.target.value)
+    }
+    const onSubmitUser = async (e) => {
+        setLoading(true)
+        setTimeout( async () => {
+            await postAddNewUser(name, email, images, password, role)
+                .then(() => {
+                    toast.success("User added successfully")
+                    setActive(false)
+                    setName("");
+                    setEmail("");
+                    setImages([]);
+                    setPassword("");
+                    setRole("role");
+                })
+                .catch((Error) => {
+                    toast.error("Adding users failed")
+                })
+            setLoading(false)
+        }, 2000)
+    }
+    const handleChangeAvatar = (e) => {
+        const formData = new FormData();
+        formData.append("file", e.target.files[0]);
+        async function uploadAvatar() {
+            try {
+                await axios
+                    .post("https://api.escuelajs.co/api/v1/files/upload", formData, {
+                        headers: {
+                            "Content-Type": "multipart/form-data",
+                        },
+                    })
+                    .then((res) => {
+                        setImages(res?.data?.location)
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
 
+            }
+            catch (error) {
+                console.log(error);
+            }
+        }
+        uploadAvatar();
+    }
     const onDeleteUser = (id) => {
         deleteUser(id)
             .then(() => {
-                toast.success("Xóa người dùng thành công");
+                toast.success("Delete user successfully");
                 getAllUser()
                     .then((user) => {
-                        SetUser(user);
+                        setUser(user);
                     })
             })
             .catch((error) => {
                 if (error.response && error.response.status === 401) {
-                    toast.error("Không có quyền xóa ngưởi dùng này.");
+                    toast.error("There is no permission to delete this user.");
                 } else {
-                    toast.error("Xóa người dùng thất bại");
+                    toast.error("User deletion failed");
                 }
             });
     }
     useEffect(() => {
         getAllUser()
             .then((user) => {
-                SetUser(user);
+                setUser(user);
             })
             .catch((error) => {
-                toast.error("Lỗi khi lấy danh sách người dùng");
+                toast.error("Error getting list of users");
             });
     }, [])
+    useEffect(() => {
+        const userLogin = JSON.parse(localStorage.getItem('user')) || null;
+        if (userLogin) {
+          navigate('/user')
+        } else {
+          navigate('/')
+        }
+      }, [navigate]);
     return (
         <Layout>
             <div className="topbar">
@@ -73,13 +159,8 @@ export default function User() {
                     <div className="filter-brg">
                         <div className="filter-left">
                             <select name="selName">
-                                <option value="">Select User</option>
-                                <option value="1">Sports</option>
-                                <option value="2">Watches</option>
-                                <option value="3">Fashion</option>
-                                <option value="4">Headphones</option>
-                                <option value="5">Footwear</option>
-                                <option value="6">Luggage</option>
+                                <option hidden>Select User</option>
+                                <option hidden>--------</option>
                             </select>
                         </div>
                         <div className="filter-right">
@@ -95,11 +176,11 @@ export default function User() {
                                     <input className="input" type="search" placeholder="Search user" />
                                 </div>
                             </div>
-                            <div className="refresh">
-                                <i className="fa-solid fa-arrows-rotate"></i>
+                            <div className="">
+                                <button className='refresh' onClick={onClickRefresh}><i className="fa-solid fa-arrows-rotate"></i></button>
                             </div>
                             <div className="add">
-                                <a href="" className="add-sv"><i className="fa-solid fa-circle-plus"></i>Add User</a>
+                                <a className="add-sv" onClick={onAddUser}><i className="fa-solid fa-circle-plus"></i>Add User</a>
                             </div>
                         </div>
                     </div>
@@ -154,6 +235,47 @@ export default function User() {
                                 <a href="" className="pages-1">4</a>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div className={active ? "edit-modal js-modal open" : "edit-modal js-modal"}>
+                <div className="modal-container">
+                    <div className="modal-close js-modal-close" onClick={onAddUser}><i className="fa-solid fa-xmark"></i></div>
+                    <header className="modal-header">Add User</header>
+                    <div className="modal-body">
+                        <form action="" onSubmit={handleSubmit(onSubmitUser)}>
+                            <label htmlFor="name" className="modal-label">
+                                Name
+                            </label>
+                            <input {...register('name', { required: true })} id="name" type="text" className="modal-input" placeholder="Name" value={name || ''} onChange={onChangeName} />
+                            {errors.name && <p className='notification'>Name is required.</p>}
+                            <label htmlFor="type" className="modal-label">
+                                Email
+                            </label>
+                            <input {...register('email', { required: true })} id="type" type="email" className="modal-input" placeholder="Email" value={email || ''} onChange={onChangeEmail} />
+                            {errors.email && <p className='notification'>Email is required.</p>}
+                            <label htmlFor="status" className="modal-label">
+                                Password
+                            </label>
+                            <input {...register('password', { required: true })} id="password" type="password" className="modal-input" placeholder="Password" value={password || ''} onChange={onChangePassword} />
+                            {errors.password && <p className='notification'>Password is required.</p>}
+                            <label htmlFor="status" className="modal-label">
+                                Role
+                            </label>
+                            <select required className='modal-select' name="selName" value={role} onChange={onChangeRole} >
+                                <option value="role" hidden>Role</option>
+                                <option value="customer">Customer</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                            <label htmlFor="status" className="modal-label">
+                                Images
+                            </label>
+                            <input {...register('file', { required: true })} id="img-file" type="file" className="modal-input" placeholder="Images" onChange={handleChangeAvatar} />
+                            {errors.file && <p className='notification'>File is required.</p>}
+                            <button type='submit' className="loader__btn mt">
+                                {loading ? <div className="loader"></div> : 'Save'}
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

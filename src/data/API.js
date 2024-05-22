@@ -82,6 +82,52 @@ export const deleteUser = (id) => {
                 id: id
             })
         })
-            .then((res) => res.json())
+            .then((res) => {
+                if(!res.ok) {
+                    throw new Error('Có lỗi xảy ra ' + res.status);
+                }
+                res.json()
+            })
+                
+    )
+};
+export const createNewProduct =(title,price,description,categoryId,images) => {
+    return (
+        fetch('https://api.escuelajs.co/api/v1/products/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                title: title,
+                price: price,
+                description: description,
+                categoryId: categoryId,
+                images: images
+            })
+        })
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error('Có lỗi xảy ra ' + res.status);
+                }
+                res.json()})
     )
 }
+export const postAddNewUser = (name, email,avatar, password, role) => {
+    return (
+        fetch('https://api.escuelajs.co/api/v1/users/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                avatar: avatar,
+                password: password,
+                role: role
+            })
+        })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error('Có lỗi xảy ra ' + res.status);
+                }
+                res.json()})
+    )
+};
