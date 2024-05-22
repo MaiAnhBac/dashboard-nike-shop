@@ -279,6 +279,7 @@
       padding: 10px;
       border: 1px solid #ccc;
       margin-bottom: 3px;
+      height: 43px;
     }
     .modal-select:focus {
       outline: none;
@@ -299,6 +300,7 @@
     }
     #img-file {
       padding: 2px;
+      height: 43px;
     }
     #img-file::file-selector-button {
       background: #3258d3;
