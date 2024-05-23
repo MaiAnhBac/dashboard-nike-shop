@@ -15,6 +15,7 @@ export default function Product() {
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors }, } = useForm();
     const [data, setData] = useState([])
+    const [all, setAll] = useState()
     const [category, setCategory] = useState([])
     const [select, setSelect] = useState('');
     const [search, setSearch] = useState('')
@@ -156,6 +157,7 @@ export default function Product() {
             .then((data) => {
                 const datas = Math.ceil(data.length / limit)
                 setCount(datas);
+                setAll(data.length)
             })
         getProductsByLimit(0, limit)
             .then((offset) => {
@@ -294,7 +296,7 @@ export default function Product() {
                         </table>
                         <div className="bottom">
                             <div className="total">
-                                <span className="total-page">Showing {data.length} of {data.length} Results</span>
+                                <span className="total-page">Showing {data.length} of {all} Results</span>
                             </div>
                             <div className="pages">
                                 <Stack spacing={2}>
