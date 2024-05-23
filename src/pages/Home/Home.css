@@ -48,8 +48,7 @@ body.dark-mode {
 }
 .real {
     padding: 20px;
-    background: var(--brg-main);
-    height: calc(100% - 60px);
+    padding-bottom: 60px;
 }
 .real .real-top .real-item-1 {
     display: flex;

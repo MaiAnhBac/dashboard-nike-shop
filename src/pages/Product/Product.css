@@ -1,6 +1,5 @@
 .bottombar {
-    background: var(--brg-main);
-    height: calc(100vh - 60px);
+    padding-bottom: 60px;
 }
 .bottombar .product-item-1 {
     display: flex;

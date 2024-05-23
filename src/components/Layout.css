@@ -4,7 +4,8 @@ main
     width: calc(100% - 250px);
     left: 250px;
     min-height: 100%;
-    background: var(--white);
+    height: auto;
+    background: var(--brg-main);
     transition: 0.5s;
 }
 .main.active{
@@ -12,12 +13,11 @@ main
     left: 80px;
 }
 footer {
+    height:60px; 
     position: absolute;
-    /* bottom: 0; */
+    width: 100%;
+    bottom: 0;
     background: var(--brg-topbar);
-    padding-top: 50px;
-    right: 0;
-    left: 0;
     border-top: 1px solid var(--brg);
    }
    footer .footer-item-row {
