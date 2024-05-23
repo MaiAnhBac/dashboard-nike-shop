@@ -112,8 +112,12 @@ export default function Product() {
                         setData(data);
                     })
             })
-            .catch(() => {
-                toast.error("Delete failed product")
+            .catch(error => {
+                if (error.message.includes('401')) {
+                    toast.error("User deletion failed!");
+                } else {
+                    toast.error("Another error has occurred");
+                }
             })
     }
     const onChangeLowHight = (e) => {
@@ -343,7 +347,7 @@ export default function Product() {
                             {errors.file && <p className='notification'>File is required.</p>}
                             <div className='btn_add'>
                                 <button type='button' className='btn_close' onClick={onAddProduct}>Hủy</button>
-                                <button type='submit' className="loader__btn mt">
+                                <button type='submit' className="loader__btn mt" disabled={loading}>
                                     {loading ? <div className="loader"></div> : 'Save'}
                                 </button>
                             </div>

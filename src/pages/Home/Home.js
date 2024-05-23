@@ -145,6 +145,26 @@ export default function Home() {
   const [product, setProduct] = useState([])
   const [category, setCategory] = useState([])
   const [user, setUser] = useState([])
+  const [changeProduct, setChangeProduct] = useState()
+  const [changeUser, setChangeUser] = useState()
+  const [changeCate, setChangeCate] = useState()
+  useEffect(() => {
+    const initialQuantity = 50;
+    const newQuantity = product.length;
+    const change = ((newQuantity - initialQuantity) / initialQuantity) * 100;
+    setChangeProduct(change.toFixed(2));
+
+    const initialUser = 50;
+    const userQuantity = user.length;
+    const changeUser = ((userQuantity - initialUser) / initialUser) * 100;
+    setChangeUser(changeUser.toFixed(2))
+
+    const initialCategory = 20;
+    const categoryQuantity = category.length;
+    const changeCategory = ((categoryQuantity - initialCategory) / initialCategory) * 100;
+    setChangeCate(changeCategory.toFixed(2))
+
+  })
   useEffect(() => {
     getAllProducts()
       .then((data) => {
@@ -216,8 +236,16 @@ export default function Home() {
                 </div>
                 <div className="row-number">
                   <span className="number-1">{product.length} </span>
-                  <i className="fa-solid fa-arrow-up"></i>
-                  <span className="number-up">06.19%</span>
+                  {changeProduct >= 0 ? 
+                  <>
+                    <i className="fa-solid fa-arrow-up"></i>
+                    <span className="number-up">{changeProduct}%</span> 
+                  </> : 
+                  <>
+                    <i className="fa-solid fa-arrow-down"></i>
+                    <span className="number-down">{changeProduct}%</span>
+                  </>
+                  }
                 </div>
               </div>
               <div className="row-right">
@@ -233,8 +261,16 @@ export default function Home() {
                 </div>
                 <div className="row-number">
                   <span className="number-1">{user.length} </span>
-                  <i className="fa-solid fa-arrow-up"></i>
-                  <span className="number-up">02.33%</span>
+                  {changeUser >= 0 ? 
+                  <>
+                    <i className="fa-solid fa-arrow-up"></i>
+                    <span className="number-up">{changeUser}%</span> 
+                  </> : 
+                  <>
+                    <i className="fa-solid fa-arrow-down"></i>
+                    <span className="number-down">{changeUser}%</span>
+                  </>
+                  }
                 </div>
               </div>
               <div className="row-right">
@@ -250,8 +286,16 @@ export default function Home() {
                 </div>
                 <div className="row-number">
                   <span className="number-1">{category.length}</span>
-                  <i className="fa-solid fa-arrow-up"></i>
-                  <span className="number-up">12.33%</span>
+                  {changeCate >= 0 ? 
+                  <>
+                    <i className="fa-solid fa-arrow-up"></i>
+                    <span className="number-up">{changeCate}%</span> 
+                  </> : 
+                  <>
+                    <i className="fa-solid fa-arrow-down"></i>
+                    <span className="number-down">{changeCate}%</span>
+                  </>
+                  }
                 </div>
               </div>
               <div className="row-right">
@@ -262,13 +306,13 @@ export default function Home() {
               <div className="row-left">
                 <div className="row-title">
                   <span className="title-1" data-en="Propertie for sale" data-vi="Tài sản để bán">
-                    Propertie for sale
+                    Number of orders
                   </span>
                 </div>
                 <div className="row-number">
-                  <span className="number-1">3,652 </span>
-                  <i className="fa-solid fa-arrow-down"></i>
-                  <span className="number-down">06.19%</span>
+                  <span className="number-1">50</span>
+                  <i className="fa-solid fa-arrow-up"></i>
+                  <span className="number-up">56.19%</span>
                 </div>
               </div>
               <div className="row-right">

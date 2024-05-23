@@ -70,7 +70,12 @@ export const deleteProduct = (id) => {
                 id: id
             })
         })
-            .then((res) => res.json())
+        .then((res) => {
+            if(!res.ok) {
+                throw new Error('Có lỗi xảy ra ' + res.status);
+            }
+            res.json()
+        })
     )
 }
 export const deleteUser = (id) => {

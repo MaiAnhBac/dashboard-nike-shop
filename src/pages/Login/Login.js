@@ -93,7 +93,7 @@ export default function Login() {
               <a href="#" className="forgot">Forgot Password?</a>
             </div>
             <div className="btn">
-              <button type='submit' className="loader__btn">
+              <button type='submit' className="loader__btn" disabled={loading} >
                   {loading ? <div className="loader"></div> : 'Sign In'}
               </button>
             </div>

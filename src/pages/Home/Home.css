@@ -92,6 +92,7 @@ body.dark-mode {
     font-size: 22px;
     font-weight: bold;
     color: var(--title);
+    margin-right: 4px;
 }
 .real .real-top .real-item-2 .real-item-row .row-left .row-number .fa-arrow-up, .number-up {
     color: rgba(45, 203, 115);

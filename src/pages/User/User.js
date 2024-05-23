@@ -272,7 +272,7 @@ export default function User() {
                             {errors.file && <p className='notification'>File is required.</p>}
                             <div className='btn_add'>
                                 <button type='button' className='btn_close' onClick={onAddUser}>Hủy</button>
-                                <button type='submit' className="loader__btn mt">
+                                <button type='submit' className="loader__btn mt" disabled={loading}>
                                     {loading ? <div className="loader"></div> : 'Save'}
                                 </button>
                             </div>
