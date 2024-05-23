@@ -16,6 +16,8 @@ export default function Category() {
         deleteCategory(id)
             .then(() => {
                 toast.success("Delete category successfully!")
+                getAllCategory()
+                .then(category => setCategories(category))
             })
             .catch(error => {
                 if (error.message.includes('400')) {
