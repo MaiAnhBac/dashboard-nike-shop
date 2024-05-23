@@ -131,3 +131,31 @@ export const postAddNewUser = (name, email,avatar, password, role) => {
                 res.json()})
     )
 };
+export const getProductsByLimit = (off, limit) => {
+    return (
+        fetch(`https://api.escuelajs.co/api/v1/products?offset=${off}&limit=${limit}`)
+            .then(res => res.json())
+    )
+};
+export const deleteCategory = (id) => {
+    return (
+        fetch(`https://api.escuelajs.co/api/v1/categories/${id}`,{
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                id: id
+            })
+        })
+            .then((res) => {
+                if (!res.ok) {
+                    if (res.status === 401) {
+                        throw new Error('Unauthorized access - Error 401');
+                    } else {
+                        throw new Error('Có lỗi xảy ra: ' + res.status);
+                    }
+                }
+                res.json()
+            })
+                
+    )
+};

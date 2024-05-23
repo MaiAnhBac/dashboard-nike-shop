@@ -24,7 +24,7 @@ export default function User() {
         getAllUser()
             .then((user) => {
                 setUser(user);
-                toast.success("Loading success!")
+                toast.success("User reloaded!")
             })
     }
     const onChangeName = (e) => {
@@ -92,13 +92,14 @@ export default function User() {
                         setUser(user);
                     })
             })
-            .catch((error) => {
-                if (error.response && error.response.status === 401) {
-                    toast.error("There is no permission to delete this user.");
+            .catch(error => {
+                if (error.message.includes('401')) {
+                    toast.error("User deletion failed!");
                 } else {
-                    toast.error("User deletion failed");
+                    toast.error("Another error has occurred");
                 }
-            });
+            })
+            
     }
     useEffect(() => {
         getAllUser()
@@ -229,10 +230,7 @@ export default function User() {
                                 <span className="total-page">Showing {user.length} of {user.length} Results</span>
                             </div>
                             <div className="pages">
-                                <a href="" className="pages-1">1</a>
-                                <a href="" className="pages-1">2</a>
-                                <a href="" className="pages-1">3</a>
-                                <a href="" className="pages-1">4</a>
+                                
                             </div>
                         </div>
                     </div>
@@ -272,9 +270,12 @@ export default function User() {
                             </label>
                             <input {...register('file', { required: true })} id="img-file" type="file" className="modal-input" placeholder="Images" onChange={handleChangeAvatar} />
                             {errors.file && <p className='notification'>File is required.</p>}
-                            <button type='submit' className="loader__btn mt">
-                                {loading ? <div className="loader"></div> : 'Save'}
-                            </button>
+                            <div className='btn_add'>
+                                <button type='button' className='btn_close' onClick={onAddUser}>Hủy</button>
+                                <button type='submit' className="loader__btn mt">
+                                    {loading ? <div className="loader"></div> : 'Save'}
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>

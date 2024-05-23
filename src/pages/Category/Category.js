@@ -2,14 +2,36 @@ import React, { useEffect, useState } from 'react'
 import './Category.css';
 import Layout from '../../components/Layout'
 import '../style/Responsive.css'
-import { getAllCategory, getCatesByCate } from '../../data/API'
+import { getAllCategory, getCatesByCate, deleteCategory } from '../../data/API'
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 export default function Category() {
     const navigate = useNavigate();
     const [categories, setCategories] = useState([])
     const [selectCate, setSelectCate] = useState()
     const onChangeSelect = (e) => {
         setSelectCate(e.target.value)
+    }
+    const onDeleteCategory = (id) => {
+        deleteCategory(id)
+            .then(() => {
+                toast.success("Delete category successfully!")
+            })
+            .catch(error => {
+                if (error.message.includes('400')) {
+                    toast.error("Category deletion failed!");
+                } else {
+                    toast.error("Another error has occurred!");
+                }
+            });
+    } 
+    const onClickRefresh = (e) => {
+        e.preventDefault();
+        getAllCategory()
+            .then(category => {
+                setCategories(category)
+                toast.success("Catalog reloaded!")
+            })
     }
     useEffect(() =>{
         getAllCategory()
@@ -84,8 +106,8 @@ export default function Category() {
                                 <input className="input" type="search" placeholder="Search category" />
                               </div>
                         </div>
-                        <div className="refresh">
-                            <i className="fa-solid fa-arrows-rotate"></i>
+                        <div className="">
+                                <button className='refresh' onClick={onClickRefresh}><i className="fa-solid fa-arrows-rotate"></i></button>
                         </div>
                         <div className="add">
                             <a href="" className="add-sv"><i className="fa-solid fa-circle-plus"></i>Add Category</a>
@@ -118,7 +140,7 @@ export default function Category() {
                                     <td className="date">{cate.updatedAt}</td>
                                     <td className="feature">
                                         <button className="btn edit" title="Chỉnh sửa"><i className="fa-solid fa-pencil"></i></button>
-                                        <button className="btn close" title="Xóa"><i className="far fa-trash-alt"></i></button>
+                                        <button className="btn close" title="Xóa" onClick={() => onDeleteCategory(cate.id)}><i className="far fa-trash-alt"></i></button>
                                     </td>
                                 </tr>
                             ))}

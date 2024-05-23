@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react'
 import Layout from '../../components/Layout'
 import './Product.css';
 import '../style/Responsive.css'
-import { getAllProducts, getAllCategory, getProductsByCate, getSearchProduct, deleteProduct, createNewProduct } from '../../data/API'
+import { getAllProducts, getAllCategory, getProductsByCate, getSearchProduct, deleteProduct, createNewProduct, getProductsByLimit } from '../../data/API'
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+import { color } from 'chart.js/helpers';
+import { pink } from '@mui/material/colors';
 export default function Product() {
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors }, } = useForm();
@@ -19,6 +23,9 @@ export default function Product() {
     const [description, setDescription] = useState('')
     const [selected, setSelected] = useState(0)
     const [imageProduct, setImageProduct] = useState('')
+    const [page, setPage] = useState(1)
+    const limit = 10;
+    const [count, setCount] = useState(5)
     const [lowHight, setLowHight] = useState('default')
     const [active, setActive] = useState(false);
     const [loading, setLoading] = useState(false)
@@ -64,7 +71,7 @@ export default function Product() {
     }
     const onSubmitProduct = async () => {
         setLoading(true)
-        setTimeout(async() => {
+        setTimeout(async () => {
             await createNewProduct(title, price, description, selected, imageProduct)
                 .then(() => {
                     toast.success("Added product successfully")
@@ -74,19 +81,27 @@ export default function Product() {
                     setPrice('')
                     setSelected(0)
                 })
-                .catch((Error) => {
+                .catch((error) => {
                     toast.error("Adding failed products")
                 })
             setLoading(false)
         }, 2000)
-        
+
     }
     const onClickRefresh = (e) => {
         e.preventDefault();
         getAllProducts()
             .then((data) => {
                 setData(data);
-                toast.success("Loading success!")
+                toast.success("Product reloaded!")
+            })
+    }
+    const handleOffset = (event, page) => {
+        const offset = limit * (page - 1)
+        setPage(page)
+        getProductsByLimit(offset, limit)
+            .then((offset) => {
+                setData(offset)
             })
     }
     const onDeleteProduct = (id) => {
@@ -139,7 +154,12 @@ export default function Product() {
     useEffect(() => {
         getAllProducts()
             .then((data) => {
-                setData(data);
+                const datas = Math.ceil(data.length / limit)
+                setCount(datas);
+            })
+        getProductsByLimit(0, limit)
+            .then((offset) => {
+                setData(offset)
             })
         getAllCategory()
             .then((category) => {
@@ -277,10 +297,9 @@ export default function Product() {
                                 <span className="total-page">Showing {data.length} of {data.length} Results</span>
                             </div>
                             <div className="pages">
-                                <a href="" className="pages-1">1</a>
-                                <a href="" className="pages-1">2</a>
-                                <a href="" className="pages-1">3</a>
-                                <a href="" className="pages-1">4</a>
+                                <Stack spacing={2}>
+                                    <Pagination count={count} page={page} onChange={handleOffset} variant="outlined" shape="rounded" />
+                                </Stack>
                             </div>
                         </div>
                     </div>
@@ -322,9 +341,12 @@ export default function Product() {
                             </label>
                             <input {...register('file', { required: true })} id="img-file" type="file" className="modal-input" placeholder="Images" onChange={handleChangeImage} />
                             {errors.file && <p className='notification'>File is required.</p>}
-                            <button type='submit' className="loader__btn mt">
-                                {loading ? <div className="loader"></div> : 'Save'}
-                            </button>
+                            <div className='btn_add'>
+                                <button type='button' className='btn_close' onClick={onAddProduct}>Hủy</button>
+                                <button type='submit' className="loader__btn mt">
+                                    {loading ? <div className="loader"></div> : 'Save'}
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
