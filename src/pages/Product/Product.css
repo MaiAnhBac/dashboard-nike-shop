@@ -297,6 +297,7 @@
     }
     .edit-modal.open{
       display: flex;
+      z-index: 999;
     }
     .room-icon{
       background: #fff;
