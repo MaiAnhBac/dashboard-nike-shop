@@ -112,7 +112,7 @@ export default function User() {
     }, [])
     useEffect(() => {
         const userLogin = JSON.parse(localStorage.getItem('user')) || null;
-        if (userLogin) {
+        if (userLogin && userLogin.role === 'admin') {
           navigate('/user')
         } else {
           navigate('/')

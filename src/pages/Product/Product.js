@@ -9,8 +9,6 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import { color } from 'chart.js/helpers';
-import { pink } from '@mui/material/colors';
 export default function Product() {
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors }, } = useForm();

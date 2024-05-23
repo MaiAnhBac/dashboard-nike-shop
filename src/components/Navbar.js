@@ -4,6 +4,7 @@ import logo from '../images/logo-light.png'
 import { NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 function Navbar() {
+    const userLogin = JSON.parse(localStorage.getItem('user')) || null;
     const navigate = useNavigate();
     const clickLogOut = () =>{
         localStorage.removeItem('user');
@@ -44,12 +45,13 @@ function Navbar() {
                         <span className="title">Quản lý đơn hàng</span>
                     </NavLink>
                 </li>
+                {userLogin.role === 'admin' ? 
                 <li>
                     <NavLink to="/user" className="title2">
                         <span className="icon"><i className="fa-solid fa-user"></i></span>
                         <span className="title">Quản lý người dùng</span>
                     </NavLink>
-                </li>
+                </li> : '' }
                 <li>
                     <NavLink className="title2">
                         <span className="icon"><i className="fa-solid fa-gear"></i></span>
