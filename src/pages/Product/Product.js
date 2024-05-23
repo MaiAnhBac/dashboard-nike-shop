@@ -91,9 +91,9 @@ export default function Product() {
     }
     const onClickRefresh = (e) => {
         e.preventDefault();
-        getAllProducts()
-            .then((data) => {
-                setData(data);
+        getProductsByLimit(0, limit)
+            .then((offset) => {
+                setData(offset);
                 toast.success("Product reloaded!")
             })
     }
