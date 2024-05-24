@@ -261,6 +261,7 @@ export default function Product() {
                                     <th>Code</th>
                                     <th>Images</th>
                                     <th>Title</th>
+                                    <th>Description</th>
                                     <th>Category</th>
                                     <th>Stock</th>
                                     <th>Price</th>
@@ -277,6 +278,7 @@ export default function Product() {
                                             <img src={item.images[0]} alt="" className='img-pro' />
                                         </td>
                                         <td className="student-code">{item.title}</td>
+                                        <td className="description">{item.description}</td>
                                         <td className="name">{item.category.name}</td>
                                         <td className="sex">30</td>
                                         <td className="date">{item.price}$</td>
