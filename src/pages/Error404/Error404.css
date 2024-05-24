@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+.error404 {
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+}
+
+.not_page {
+    background-image: url(/src/images/bg-DsjzQ1Tx.svg);
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    height: 100%;
+}
+.not_page_container {
+    width: 100%;
+}
+.not_page_wrapper {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.bubble {
+    position: absolute;
+    border-radius: 0;
+}
+.bubble::before {
+    content: "";
+    border-radius: 20px;
+    position: absolute;
+    animation: 8s linear infinite rotating;
+}
+.bubble-one {
+    width: 120px;
+    height: 120px;
+    left: 40%;
+    top: 35%;
+    animation: 12s linear infinite rotated;
+}
+.bubble-one::before {
+    width: 8px;
+    height: 8px;
+    background: #f47920;
+    top: 0;
+    left: 50%;
+}
+.bubble-two {
+    width: 160px;
+    height: 160px;
+    top: 30%;
+    left: 55%;
+    animation: 17s linear infinite rotated;
+}
+.bubble-two::before {
+    width: 16px;
+    height: 16px;
+    background: #6561ab;
+    top: 50%;
+    right: 100%;
+}
+.bubble-three {
+    width: 120px;
+    height: 120px;
+    bottom: 33%;
+    left: 40%;
+    animation: 12s linear infinite rotated;
+}
+.bubble-three::before {
+    width: 6px;
+    height: 6px;
+    background: #f47920;
+    bottom: 0;
+    left: 50%;
+}
+.bubble-four {
+    width: 120px;
+    height: 120px;
+    right: 64%;
+    top: 15%;
+    animation: 12s linear infinite rotated;
+}
+.bubble-four::before {
+    width: 20px;
+    height: 20px;
+    background: #6561ab;
+    top: 0;
+    left: 70%;
+}
+.bubble-five {
+    width: 160px;
+    height: 160px;
+    top: 30%;
+    right: 35%;
+    animation: 17s linear infinite rotated;
+}
+.bubble-five:before {
+    width: 10px;
+    height: 10px;
+    background: #f47920;
+    top: 50%;
+    right: 100%;
+}
+.bubble-six {
+    width: 120px;
+    height: 120px;
+    bottom: 33%;
+    right: 24%;
+    animation: 12s linear infinite rotated;
+}
+.bubble-six:before {
+    width: 14px;
+    height: 14px;
+    background: #9dc2e7;
+    bottom: 0;
+    left: 50%;
+}
+.not_page_img {
+    background-image: none;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 100%;
+    animation-duration: 3s;
+    animation-name: animbg;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+.not_page_img img {
+    position: absolute;
+    max-width: 100%;
+    height: auto;
+    animation: animimg 3s 1 forwards;
+}
+.not_page_img img:nth-child(1) {
+    top: 0;
+    left: calc(50% - 140px);
+    /* margin-right: -50%; */
+    transform: translate(-50%);
+}
+.not_page_img img:nth-child(2) {
+    top: 0;
+    left: 50%;
+    /* margin-right: -50%; */
+    transform: translate(-50%);
+}
+.not_page_img img:nth-child(3) {
+    top: 0;
+    left: calc(50% + 130px);
+    /* margin-right: -50%; */
+    transform: translate(-50%);
+}
+.not_page_btn {
+    flex-basis: 70%;
+    text-align: center;
+}
+.not_page_btn .title {
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    font-size: 30px;
+    color: #565872;
+}
+.not_page_btn .btn-reset {
+    padding: 10px 20px;
+    background: #f50963;;
+    color: #fff;
+    border-radius: 10px;
+}
+@keyframes rotating {
+    0% {
+        -webkit-transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(-360deg);
+    }
+}
+@keyframes rotated {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes animbg {
+    0%, 80% {
+        background-image: none;
+    }
+    100%, 50% {
+        background-image: url(/src/images/bg404.png);
+    }
+}
+@keyframes animimg {
+    0% {
+        transform: translate(-50%, -100%);
+    }
+    80% {
+        transform: translate(-50%);
+    }
+    100% {
+        transform: translate(-50%, -5%);
+    }
+}
+@media (max-width: 460px) {
+    .not_page_img img {
+        max-width: 100px;
+        width: 100%;
+        height: auto;
+    }
+    .not_page_img img:nth-child(1) {
+        top: 3%;
+        left: calc(50% - 110px);
+    }
+    .not_page_img img:nth-child(3) {
+        left: calc(50% + 110px);
+        top: 2%;
+    }
+    .not_page_btn .title {
+        font-size: 25px;
+    }
+}

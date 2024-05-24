@@ -103,37 +103,37 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 };
 const radarchart = [
   {
-    subject: 'Math',
+    subject: 'Packed',
     A: 120,
     B: 110,
     fullMark: 150,
   },
   {
-    subject: 'Chinese',
+    subject: 'Dispatched',
     A: 98,
     B: 130,
     fullMark: 150,
   },
   {
-    subject: 'English',
+    subject: 'Reach Station',
     A: 86,
     B: 130,
     fullMark: 150,
   },
   {
-    subject: 'Geography',
+    subject: 'Out for delivery',
     A: 99,
     B: 100,
     fullMark: 150,
   },
   {
-    subject: 'Physics',
+    subject: 'Delivered',
     A: 85,
     B: 90,
     fullMark: 150,
   },
   {
-    subject: 'History',
+    subject: 'Earlier',
     A: 65,
     B: 85,
     fullMark: 150,

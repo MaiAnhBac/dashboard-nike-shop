@@ -40,7 +40,7 @@ function Navbar() {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink className="title2">
+                    <NavLink to='/error404' className="title2">
                         <span className="icon"><i className="fa-solid fa-cart-plus"></i></span>
                         <span className="title">Quản lý đơn hàng</span>
                     </NavLink>
@@ -53,7 +53,7 @@ function Navbar() {
                     </NavLink>
                 </li> : '' }
                 <li>
-                    <NavLink className="title2">
+                    <NavLink to='/error404' className="title2">
                         <span className="icon"><i className="fa-solid fa-gear"></i></span>
                         <span className="title">Cài đặt</span>
                     </NavLink>
