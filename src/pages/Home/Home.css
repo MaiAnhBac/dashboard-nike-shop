@@ -266,9 +266,9 @@ body.dark-mode {
     width: 0;
     height: 10px;
     background: rgb(54, 162, 235);
-    animation: blue 1s ease-out forwards;
+    animation: blues 1s ease-out forwards;
 }
-@keyframes blue {
+@keyframes blues {
     from {
         width: 0;
     }
@@ -280,9 +280,9 @@ body.dark-mode {
     width: 0;
     height: 10px;
     background: rgb(255, 99, 132);
-    animation: pink 1s ease-out forwards;
+    animation: pinks 1s ease-out forwards;
 }
-@keyframes pink {
+@keyframes pinks {
     from {
         width: 0;
     }
@@ -294,9 +294,9 @@ body.dark-mode {
     width: 0;
     height: 10px;
     background: #BA55D3;
-    animation: violet 1s ease-out forwards;
+    animation: violets 1s ease-out forwards;
 }
-@keyframes violet {
+@keyframes violets {
     from {
         width: 0;
     }
@@ -322,9 +322,9 @@ body.dark-mode {
     width: 0;
     height: 10px;
     background: #3CB371;
-    animation: green 1s ease-out forwards;
+    animation: greens 1s ease-out forwards;
 }
-@keyframes green {
+@keyframes greens {
     from {
         width: 0;
     }
