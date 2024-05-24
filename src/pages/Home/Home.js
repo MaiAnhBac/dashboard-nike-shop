@@ -81,10 +81,10 @@ const barchar = [
   },
 ];
 const piechart = [
-  { name: 'Group A', value: 400 },
-  { name: 'Group B', value: 300 },
-  { name: 'Group C', value: 300 },
-  { name: 'Group D', value: 200 },
+  { name: 'Packed', value: 400 },
+  { name: 'Dispatched', value: 300 },
+  { name: 'Delivered', value: 300 },
+  { name: 'Earlier', value: 200 },
 ];
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
@@ -336,7 +336,7 @@ export default function Home() {
                     cy="50%"
                     labelLine={false}
                     label={renderCustomizedLabel}
-                    outerRadius={80}
+                    outerRadius={150}
                     fill="#8884d8"
                     dataKey="value"
                   >
@@ -346,6 +346,20 @@ export default function Home() {
                   </Pie>
                 </PieChart>
               </ResponsiveContainer>
+            </div>
+            <div className="flex-noted">
+              {
+                piechart.map((item, index) => (
+                  <p key={index}>{item.name}</p>
+                ))
+              }
+            </div>
+            <div className="flex-noted">
+            {
+                COLORS.map((item, index) => (
+                  <div key={index}className='noted-colors' style={{backgroundColor: item}}></div>
+                ))
+              }
             </div>
           </div>
           <div className="real-mid-flex six">

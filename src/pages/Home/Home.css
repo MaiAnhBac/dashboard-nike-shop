@@ -170,7 +170,16 @@ body.dark-mode {
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    height: 75%;
+}
+.real .real-mid .four .flex-noted {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+.real .real-mid .four .flex-noted .noted-colors {
+    height: 30px;
+    width: 30px;
 }
 .real .real-mid .six .six-top {
     display: flex;

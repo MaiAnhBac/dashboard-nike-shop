@@ -6,6 +6,7 @@ import { getAllCategory, getCatesByCate, deleteCategory } from '../../data/API'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 export default function Category() {
+    const userLogin = JSON.parse(localStorage.getItem('user')) || null;
     const navigate = useNavigate();
     const [categories, setCategories] = useState([])
     const [selectCate, setSelectCate] = useState()
@@ -40,7 +41,6 @@ export default function Category() {
             .then(category => setCategories(category))
     }, [])
     useEffect(() => {
-        const userLogin = JSON.parse(localStorage.getItem('user')) || null;
         if (userLogin) {
           navigate('/category')
         } else {
@@ -72,7 +72,7 @@ export default function Category() {
                 </div>
                 <div className="used-right">
                     <label htmlFor="" data-en="Hi" data-vi="Chào">Hi: </label>
-                    <span className="welcome">Admin</span>
+                    <span className="welcome">{userLogin?.name}</span>
                 </div>
             </div>
         </div>

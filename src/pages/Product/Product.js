@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 export default function Product() {
+    const userLogin = JSON.parse(localStorage.getItem('user')) || null;
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors }, } = useForm();
     const [data, setData] = useState([])
@@ -171,7 +172,6 @@ export default function Product() {
             })
     }, [])
     useEffect(() => {
-        const userLogin = JSON.parse(localStorage.getItem('user')) || null;
         if (userLogin) {
             navigate('/product')
         } else {
@@ -203,7 +203,7 @@ export default function Product() {
                     </div>
                     <div className="used-right">
                         <label htmlFor="" data-en="Hi" data-vi="Chào">Hi: </label>
-                        <span className="welcome">Admin</span>
+                        <span className="welcome">{userLogin?.name}</span>
                     </div>
                 </div>
             </div>

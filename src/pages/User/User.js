@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 export default function User() {
+    const userLogin = JSON.parse(localStorage.getItem('user')) || null;
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors }, } = useForm();
     const [user, setUser] = useState([]);
@@ -111,7 +112,6 @@ export default function User() {
             });
     }, [])
     useEffect(() => {
-        const userLogin = JSON.parse(localStorage.getItem('user')) || null;
         if (userLogin && userLogin.role === 'admin') {
           navigate('/user')
         } else {
@@ -143,7 +143,7 @@ export default function User() {
                     </div>
                     <div className="used-right">
                         <label htmlFor="" data-en="Hi" data-vi="Chào">Hi: </label>
-                        <span className="welcome">Admin</span>
+                        <span className="welcome">{userLogin?.name}</span>
                     </div>
                 </div>
             </div>
