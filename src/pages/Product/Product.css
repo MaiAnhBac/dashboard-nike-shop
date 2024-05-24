@@ -64,13 +64,13 @@
     height: 40px;
     display: flex;
     align-items: center;
-    padding: 20px;
     border-radius: 10px ;
     cursor: pointer;
 }
 .filter .filter-right .add .add-sv {
     color: var(--white);
     font-size: 14px;
+    padding: 10px 15px;
 }
 .filter .filter-right .add .add-sv .fa-circle-plus {
     margin-right: 10px;

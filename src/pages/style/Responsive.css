@@ -17,6 +17,10 @@
     .content-table {
         font-size: 0.8em;
      }
+     .filter .filter-left select.select-low-high {
+        margin-left: 0 !important;
+        margin-top: 10px;
+      }
 }
 @media only  screen and (max-width: 768px) {
     .navigation {
@@ -51,10 +55,6 @@
     .filter .filter-left select {
         width: 100%;
     }
-    .filter .filter-left select.select-low-high {
-        margin-left: 0 !important;
-        margin-top: 10px;
-      }
     .filter .filter-right {
         width: 100%;
     }
