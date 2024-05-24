@@ -138,8 +138,8 @@ export default function Category() {
                                     <td className="img">
                                         <img src={cate.image} width={30} height={30} alt="" />
                                     </td>
-                                    <td className="sex">{cate.creationAt}</td>
-                                    <td className="date">{cate.updatedAt}</td>
+                                    <td className="sex">{cate.creationAt.split('T')[0]}</td>
+                                    <td className="date">{cate.updatedAt.split('T')[0]}</td>
                                     <td className="feature">
                                         <button className="btn edit" title="Chỉnh sửa"><i className="fa-solid fa-pencil"></i></button>
                                         <button className="btn close" title="Xóa" onClick={() => onDeleteCategory(cate.id)}><i className="far fa-trash-alt"></i></button>

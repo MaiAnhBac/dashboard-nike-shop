@@ -151,6 +151,10 @@
     width: 30px;
     height: 30px;
   }
+  .content-table td.description {
+    white-space: normal;
+    text-align: justify;
+  }
   .content-table tbody tr {
     border-bottom: 1px solid #dddddd;
     border-color: inherit;

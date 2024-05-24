@@ -282,7 +282,7 @@ export default function Product() {
                                         <td className="name">{item.category.name}</td>
                                         <td className="sex">30</td>
                                         <td className="date">{item.price}$</td>
-                                        <td className="date">{item.updatedAt}</td>
+                                        <td className="date">{item.updatedAt.split('T')[0]}</td>
                                         <td className="status">
                                             <span className="status-online">
                                                 <i className="fa-solid fa-star"></i>

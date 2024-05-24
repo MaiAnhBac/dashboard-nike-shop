@@ -26,7 +26,7 @@ export default function Error404() {
                             </div>
                             <div className="not_page_btn">
                                 <p className="title">Opps! Page not found</p>
-                                <Link to="/home" className="btn-reset">Back to home</Link>
+                                <Link to="/home" className="btn-reset"><i class="fa-solid fa-angles-left"></i> Back to home</Link>
                             </div>
                         </div>
                     </div>
