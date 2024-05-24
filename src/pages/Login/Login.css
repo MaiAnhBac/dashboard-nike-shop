@@ -51,11 +51,14 @@ form label {
 form label .red {
     color: red;
 }
-form .input {
+form .input-login {
     width: 100%;
     border: 1px solid #dde1ef;
     border-radius: 3px;
     padding: 10px 50px 10px 15px;
+    height: 40px;
+    background: #f3f3f4;
+    outline: none;
 }
 form .input:focus{
     outline: none;

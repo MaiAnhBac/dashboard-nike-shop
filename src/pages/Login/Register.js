@@ -20,19 +20,19 @@ export default function Register() {
                     <div className="email">
                         <label for="">Email <span className="red">*</span></label>
                         <div className="form-input">
-                            <input type="text" className="input" placeholder="Email của bạn" />
+                            <input type="text" className="input-login" placeholder="Email của bạn" />
                         </div>
                     </div>
                     <div className="user">
                         <label for="">Username <span className="red">*</span></label>
                         <div className="form-input">
-                            <input type="text" className="input" placeholder="Username của bạn" />
+                            <input type="text" className="input-login" placeholder="Username của bạn" />
                         </div>
                     </div>
                     <div className="pass">
                         <label for="">Password <span className="red">*</span></label>
                         <div className="form-input">
-                            <input type="password" id="password" className="input" placeholder="Password của bạn" />
+                            <input type="password" id="password" className="input-login" placeholder="Password của bạn" />
                             <i className="fa-regular fa-eye" onClick={changTypeConPass}></i>
                             <i className="fa-regular fa-eye-slash" onClick={changTypeConPass}></i>
                         </div>
@@ -40,7 +40,7 @@ export default function Register() {
                     <div className="pass">
                         <label for="">Confirm password<span className="red">*</span></label>
                         <div className="form-input">
-                            <input type="password" id="confirm-password" className="input" placeholder="Confirm password của bạn" />
+                            <input type="password" id="confirm-password" className="input-login" placeholder="Confirm password của bạn" />
                             <i className="fa-regular fa-eye" onClick={changTypeConPass}></i>
                             <i className="fa-regular fa-eye-slash" onClick={changTypeConPass}></i>
                         </div>

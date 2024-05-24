@@ -74,13 +74,13 @@ export default function Login() {
             <div className="user">
               <label htmlFor="email">Email <span className="red">*</span></label>
               <div className="form-input">
-                <input type="email" placeholder="Email của bạn" id="email" className="input" required value={email} onChange={onChangeEmail} />
+                <input type="email" placeholder="Email của bạn" id="email" className="input-login" required value={email} onChange={onChangeEmail} />
               </div>
             </div>
             <div className="pass">
               <label htmlFor="password">Password <span className="red">*</span></label>
               <div className="form-input">
-                <input type="password" placeholder="Password của bạn" id="password" className="input" required value={password} onChange={onChangePassword} />
+                <input type="password" placeholder="Password của bạn" id="password" className="input-login" required value={password} onChange={onChangePassword} />
                 <i className="fa-regular fa-eye" onClick={changTypePass}></i>
                 <i className="fa-regular fa-eye-slash" onClick={changTypePass}></i>
               </div>
