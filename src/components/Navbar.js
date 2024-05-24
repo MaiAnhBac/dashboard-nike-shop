@@ -45,9 +45,9 @@ function Navbar() {
                         <span className="title">Quản lý đơn hàng</span>
                     </NavLink>
                 </li>
-                {userLogin.role === 'admin' ? 
+                {userLogin && userLogin.role === 'admin' ? 
                 <li>
-                    <NavLink to="/user" className="title2">
+                    <NavLink to={"/user"} className="title2">
                         <span className="icon"><i className="fa-solid fa-user"></i></span>
                         <span className="title">Quản lý người dùng</span>
                     </NavLink>
