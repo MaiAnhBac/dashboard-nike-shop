@@ -308,9 +308,9 @@ body.dark-mode {
     width: 0;
     height: 10px;
     background: rgb(255, 205, 86);
-    animation: yellow 1s ease-out forwards;
+    animation: yellows 1s ease-out forwards;
 }
-@keyframes yellow {
+@keyframes yellows {
     from {
         width: 0;
     }
