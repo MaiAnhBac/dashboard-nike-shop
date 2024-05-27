@@ -6,7 +6,7 @@ import { getAllProducts, getAllCategory, getProductsByCate, getSearchProduct, de
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 export default function Product() {
@@ -290,7 +290,9 @@ export default function Product() {
                                             </span>
                                         </td>
                                         <td className="feature">
-                                            <button className="btn edit" title="Chỉnh sửa"><i className="fa-solid fa-pencil"></i></button>
+                                            <Link to={`/product_details/${item.id}`}>
+                                                <button className="btn edit" title="Chỉnh sửa"><i className="fa-solid fa-pencil"></i></button>
+                                            </Link>
                                             <button className="btn close" title="Xóa" onClick={() => onDeleteProduct(item.id)}><i className="far fa-trash-alt"></i></button>
                                         </td>
                                     </tr>

@@ -154,6 +154,10 @@
   .content-table td.description {
     white-space: normal;
     text-align: justify;
+    max-width: 200px; /* Giới hạn chiều rộng của ô td */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .content-table tbody tr {
     border-bottom: 1px solid #dddddd;

@@ -1,0 +1,75 @@
+.product_details {
+    padding: 20px;
+}
+.details_item {
+    padding: 10px;
+    background: var(--brg-row);
+    border-radius: 7px;
+}
+.item_img_edit {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}
+.img_details {
+    width: 100%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.item_input {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.item_input_edit {
+    width: 100%;
+}
+.edit_label {
+    font-weight: 600;
+}
+.edit_input {
+    background: #f3f3f4;
+    border: 1px solid #dde1ef;
+    border-radius: 3px;
+    height: 40px;
+    outline: none;
+    padding: 10px;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+.edit_textarea {
+    background: #f3f3f4;
+    border: 1px solid #dde1ef;
+    border-radius: 3px;
+    outline: none;
+    padding: 10px;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+.item_button {
+    align-items: center;
+    column-gap: 10px;
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+}
+.btn_close_edit {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    width: 50px;
+}
+.btn_save_edit {
+    align-items: center;
+    background: #3258d3;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    width: 100px;
+}

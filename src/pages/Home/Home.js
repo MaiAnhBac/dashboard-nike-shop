@@ -1,85 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, Radar} from 'recharts';
 import Layout from '../../components/Layout'
+import Radar_Chart from './Radar_Chart';
+import Bar_Chart from './Bar_Chart';
 import './Home.css';
 import './Dark-mode.css'
 import '../style/Responsive.css'
 import { getAllUser, getAllCategory, getAllProducts } from '../../data/API'
 import { useNavigate } from 'react-router-dom';
-const barchar = [
-  {
-    name: 'Jan',
-    uv: 50,
-    pv: 100,
-    amt: 2400,
-  },
-  {
-    name: 'Feb',
-    uv: 51,
-    pv: 88,
-    amt: 2210,
-  },
-  {
-    name: 'Mar',
-    uv: 50,
-    pv: 70,
-    amt: 2290,
-  },
-  {
-    name: 'Apr',
-    uv: 50,
-    pv: 8,
-    amt: 2000,
-  },
-  {
-    name: 'May',
-    uv: 43,
-    pv: 40,
-    amt: 2181,
-  },
-  {
-    name: 'Jun',
-    uv: 20,
-    pv: 60,
-    amt: 2500,
-  },
-  {
-    name: 'Jul',
-    uv: 45,
-    pv: 43,
-    amt: 2100,
-  },
-  {
-    name: 'Aug',
-    uv: 30,
-    pv: 51,
-    amt: 2100,
-  },
-  {
-    name: 'Sep',
-    uv: 10,
-    pv: 41,
-    amt: 2100,
-  },
-  {
-    name: 'Oct',
-    uv: 21,
-    pv: 47,
-    amt: 2100,
-  },
-  {
-    name: 'Nov',
-    uv: 25,
-    pv: 49,
-    amt: 2100,
-  },
-  {
-    name: 'Dec',
-    uv: 34,
-    pv: 50,
-    amt: 2100,
-  },
-];
 const piechart = [
   { name: 'Packed', value: 400 },
   { name: 'Dispatched', value: 300 },
@@ -101,44 +29,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
     </text>
   );
 };
-const radarchart = [
-  {
-    subject: 'Packed',
-    A: 120,
-    B: 110,
-    fullMark: 150,
-  },
-  {
-    subject: 'Dispatched',
-    A: 98,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: 'Reach Station',
-    A: 86,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: 'Out for delivery',
-    A: 99,
-    B: 100,
-    fullMark: 150,
-  },
-  {
-    subject: 'Delivered',
-    A: 85,
-    B: 90,
-    fullMark: 150,
-  },
-  {
-    subject: 'Earlier',
-    A: 65,
-    B: 85,
-    fullMark: 150,
-  },
-];
+
 export default function Home() {
   const userLogin = JSON.parse(localStorage.getItem('user')) || null;
   const navigate = useNavigate();
@@ -368,27 +259,7 @@ export default function Home() {
               <input type="date" name="" id="" className="date" />
             </div>
             <div className="six-bottom">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                  width={500}
-                  height={400}
-                  data={barchar}
-                  margin={{
-                    top: 10,
-                    right: 10,
-                    left: 0,
-                    bottom: 20,
-                  }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend iconType='circle' iconSize={10} verticalAlign="top" align='right' />
-                  <Bar dataKey="pv" fill="#475be8" activeBar={false} isAnimationActive={false} barSize={24} radius={[4, 4, 4, 4]} />
-                  <Bar dataKey="uv" fill="#e3e7fc" activeBar={false} isAnimationActive={false} barSize={24} radius={[4, 4, 4, 4]} />
-                </BarChart>
-              </ResponsiveContainer>
+              <Bar_Chart />
             </div>
           </div>
         </div>
@@ -399,14 +270,7 @@ export default function Home() {
               <i className="fa-solid fa-ellipsis-vertical"></i>
             </div>
             <div className="flex-bottom">
-              <ResponsiveContainer width="100%" height="100%">
-                <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarchart}>
-                  <PolarGrid />
-                  <PolarAngleAxis dataKey="subject" />
-                  <PolarRadiusAxis />
-                  <Radar name="Mike" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
-                </RadarChart>
-              </ResponsiveContainer>
+              <Radar_Chart />
             </div>
           </div>
           <div className="real-bottom-flex">

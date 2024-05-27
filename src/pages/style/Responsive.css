@@ -91,6 +91,10 @@
     .real .real-mid .six .six-top .date {
         width: 150px;
     }
+    .item_input {
+        flex-direction: column;
+        gap: 10px !important;
+    }
  }
  @media only  screen and (max-width: 480px) {
     .filter .filter-right {

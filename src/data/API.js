@@ -164,3 +164,9 @@ export const deleteCategory = (id) => {
                 
     )
 };
+export const getProductsByDetails = (id) => {
+    return (
+        fetch(`https://api.escuelajs.co/api/v1/products/${id}`)
+            .then(res => res.json())
+    )
+};
