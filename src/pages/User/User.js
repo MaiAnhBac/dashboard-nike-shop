@@ -131,12 +131,6 @@ export default function User() {
                     <h3>USER MANAGEMENT</h3>
                 </div>
                 <div className="used">
-                    <div className="selec-bar">
-                        <select className="select-bar" id="language-select">
-                            <option value="en">En</option>
-                            <option value="vi">Vi</option>
-                        </select>
-                    </div>
                     <div className="used-left">
                         <label className="theme">
                             <input type="checkbox" className="input-cb" id="checkbox" />
