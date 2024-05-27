@@ -40,7 +40,7 @@ function Navbar() {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/error404' className="title2">
+                    <NavLink to='/order' className="title2">
                         <span className="icon"><i className="fa-solid fa-cart-plus"></i></span>
                         <span className="title">Quản lý đơn hàng</span>
                     </NavLink>

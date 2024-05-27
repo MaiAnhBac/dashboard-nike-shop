@@ -1,0 +1,31 @@
+.customer {
+    font-weight: 700;
+}
+.payments_items {
+    background: #67b3e6;
+    color: #fff;
+    padding: 7px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+.status_delivered {
+    background: #07bc0ca8;
+    color: #fff;
+    padding: 7px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+.status_delivering {
+    background: #f1c40fc2;
+    color: #fff;
+    padding: 7px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+.status_no_process {
+    background: #e74c3ce6;
+    color: #fff;
+    padding: 7px;
+    border-radius: 5px;
+    font-weight: 700;
+}

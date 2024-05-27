@@ -10,6 +10,9 @@ export default function Category() {
     const navigate = useNavigate();
     const [categories, setCategories] = useState([])
     const [selectCate, setSelectCate] = useState()
+    const onClickAction = () => {
+        toast.warn("Feature under development!")
+    }
     const onChangeSelect = (e) => {
         setSelectCate(e.target.value)
     }
@@ -141,7 +144,7 @@ export default function Category() {
                                     <td className="sex">{cate.creationAt.split('T')[0]}</td>
                                     <td className="date">{cate.updatedAt.split('T')[0]}</td>
                                     <td className="feature">
-                                        <button className="btn edit" title="Chỉnh sửa"><i className="fa-solid fa-pencil"></i></button>
+                                        <button className="btn edit" title="Chỉnh sửa" onClick={onClickAction}><i className="fa-solid fa-pencil"></i></button>
                                         <button className="btn close" title="Xóa" onClick={() => onDeleteCategory(cate.id)}><i className="far fa-trash-alt"></i></button>
                                     </td>
                                 </tr>

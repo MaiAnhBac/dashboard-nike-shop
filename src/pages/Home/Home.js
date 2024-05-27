@@ -201,9 +201,9 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="row-number">
-                  <span className="number-1">50</span>
-                  <i className="fa-solid fa-arrow-up"></i>
-                  <span className="number-up">56.19%</span>
+                  <span className="number-1">4</span>
+                  <i className="fa-solid fa-arrow-down"></i>
+                  <span className="number-down">26.19%</span>
                 </div>
               </div>
               <div className="row-right">

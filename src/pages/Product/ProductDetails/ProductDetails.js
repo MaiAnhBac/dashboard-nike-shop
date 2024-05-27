@@ -4,11 +4,12 @@ import { useParams } from 'react-router-dom';
 import {getProductsByDetails} from '../../../data/API'
 import '../ProductDetails/ProductDetails.css';
 import '../../style/Responsive.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import img from '../../../images/430982849_1506914163186871_1734766106111702841_n.jpg'
 export default function ProductDetails() {
     const userLogin = JSON.parse(localStorage.getItem('user')) || null;
     const {id} = useParams()
+    const navigate = useNavigate()
     const [details, setDetails] = useState([])
     useEffect(() => {
         getProductsByDetails(id)
@@ -16,6 +17,11 @@ export default function ProductDetails() {
                 setDetails(details);
             })
     }, [])
+    useEffect(() => {
+        if (!userLogin) {
+            navigate('/')
+        } 
+    }, [navigate]);
     return (
         <Layout>
             <div className="topbar">
