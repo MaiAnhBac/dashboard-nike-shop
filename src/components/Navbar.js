@@ -24,44 +24,44 @@ function Navbar() {
                 <li>
                     <NavLink to="/home" className="title2 active">
                         <span className="icon"><i className="fa-solid fa-chart-pie"></i></span>
-                        <span className="title">Tổng quan</span>
+                        <span className="title">Dashboard</span>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to="/product" className="title2">
                         <span className="icon"><i className="fa-solid fa-briefcase"></i></span>
-                        <span className="title">Quản lý sản phẩm</span>
+                        <span className="title">Products</span>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to="/category" className="title2">
                         <span className="icon"><i className="fa-solid fa-clipboard"></i></span>
-                        <span className="title">Quản lý thể loại</span>
+                        <span className="title">Category</span>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to='/order' className="title2">
                         <span className="icon"><i className="fa-solid fa-cart-plus"></i></span>
-                        <span className="title">Quản lý đơn hàng</span>
+                        <span className="title">Orders</span>
                     </NavLink>
                 </li>
                 {userLogin && userLogin.role === 'admin' ? 
                 <li>
                     <NavLink to={"/user"} className="title2">
                         <span className="icon"><i className="fa-solid fa-user"></i></span>
-                        <span className="title">Quản lý người dùng</span>
+                        <span className="title">Users</span>
                     </NavLink>
                 </li> : '' }
                 <li>
                     <NavLink to='/error404' className="title2">
                         <span className="icon"><i className="fa-solid fa-gear"></i></span>
-                        <span className="title">Cài đặt</span>
+                        <span className="title">Settings</span>
                     </NavLink>
                 </li>
                 <li onClick={clickLogOut}>
                     <NavLink >
                         <span className="icon"><i className="fa-solid fa-right-from-bracket"></i></span>
-                        <span className="title">Đăng xuất</span>
+                        <span className="title">Logout</span>
                     </NavLink>
                 </li>
             </ul>

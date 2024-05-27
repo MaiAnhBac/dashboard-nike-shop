@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, Radar} from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, Radar } from 'recharts';
 import Layout from '../../components/Layout'
 import Radar_Chart from './Radar_Chart';
 import Bar_Chart from './Bar_Chart';
@@ -69,7 +69,7 @@ export default function Home() {
       .then((user) => {
         setUser(user);
       })
-  },[])
+  }, [])
   useEffect(() => {
     if (userLogin) {
       navigate('/home')
@@ -78,14 +78,14 @@ export default function Home() {
     }
   }, [navigate]);
   return (
-    
+
     <Layout>
       <div className="topbar">
         <div className="toggle">
           <i className="fa-solid fa-bars"></i>
         </div>
         <div className="search">
-          <h3 data-en="OVERVIEW" data-vi="TỔNG QUAN">OVERVIEW</h3>
+          <h3 data-en="OVERVIEW" data-vi="TỔNG QUAN">Dashboard</h3>
         </div>
         <div className="used">
           <div className="selec-bar">
@@ -101,16 +101,22 @@ export default function Home() {
               <svg className="ic icon-moon" viewBox="0 0 24 24"><path d="m12.3 4.9c.4-.2.6-.7.5-1.1s-.6-.8-1.1-.8c-4.9.1-8.7 4.1-8.7 9 0 5 4 9 9 9 3.8 0 7.1-2.4 8.4-5.9.2-.4 0-.9-.4-1.2s-.9-.2-1.2.1c-1 .9-2.3 1.4-3.7 1.4-3.1 0-5.7-2.5-5.7-5.7 0-1.9 1.1-3.8 2.9-4.8zm2.8 12.5c.5 0 1 0 1.4-.1-1.2 1.1-2.8 1.7-4.5 1.7-3.9 0-7-3.1-7-7 0-2.5 1.4-4.8 3.5-6-.7 1.1-1 2.4-1 3.8-.1 4.2 3.4 7.6 7.6 7.6z"></path></svg>
             </label>
           </div>
+          <div className="used-vertical"></div>
           <div className="used-right">
-            <label htmlFor="" data-en="Hi" data-vi="Chào">Hi: </label>
-            <span className="welcome" id="welcome">{userLogin?.name}</span>
+            <div className='used_right_img'>
+              <img src={userLogin.avatar} alt="" className='img_user' />
+            </div>
+            <div className="used_right_name">
+              <span className="welcome" id="welcome">{userLogin?.name}</span>
+              <p className="role">{userLogin.role}</p>
+            </div>
           </div>
         </div>
       </div>
       <div className="real">
         <div className="real-top">
           <div className="real-item-1">
-            <h3 className="estate" data-en="REAL ESTATE" data-vi="ĐỊA ỐC">REAL ESTATE</h3>
+            <h3 className="estate" data-en="REAL ESTATE" data-vi="ĐỊA ỐC">DASHBOARD</h3>
             <span className="path">
               <a href="#" className="dashboard" data-en="Dashboards" data-vi="Trang tổng quan">Dashboards</a>
               <i className="fa-solid fa-angle-right"></i>
@@ -127,15 +133,15 @@ export default function Home() {
                 </div>
                 <div className="row-number">
                   <span className="number-1">{product.length} </span>
-                  {changeProduct >= 0 ? 
-                  <>
-                    <i className="fa-solid fa-arrow-up"></i>
-                    <span className="number-up">{changeProduct}%</span> 
-                  </> : 
-                  <>
-                    <i className="fa-solid fa-arrow-down"></i>
-                    <span className="number-down">{changeProduct}%</span>
-                  </>
+                  {changeProduct >= 0 ?
+                    <>
+                      <i className="fa-solid fa-arrow-up"></i>
+                      <span className="number-up">{changeProduct}%</span>
+                    </> :
+                    <>
+                      <i className="fa-solid fa-arrow-down"></i>
+                      <span className="number-down">{changeProduct}%</span>
+                    </>
                   }
                 </div>
               </div>
@@ -152,15 +158,15 @@ export default function Home() {
                 </div>
                 <div className="row-number">
                   <span className="number-1">{user.length} </span>
-                  {changeUser >= 0 ? 
-                  <>
-                    <i className="fa-solid fa-arrow-up"></i>
-                    <span className="number-up">{changeUser}%</span> 
-                  </> : 
-                  <>
-                    <i className="fa-solid fa-arrow-down"></i>
-                    <span className="number-down">{changeUser}%</span>
-                  </>
+                  {changeUser >= 0 ?
+                    <>
+                      <i className="fa-solid fa-arrow-up"></i>
+                      <span className="number-up">{changeUser}%</span>
+                    </> :
+                    <>
+                      <i className="fa-solid fa-arrow-down"></i>
+                      <span className="number-down">{changeUser}%</span>
+                    </>
                   }
                 </div>
               </div>
@@ -177,15 +183,15 @@ export default function Home() {
                 </div>
                 <div className="row-number">
                   <span className="number-1">{category.length}</span>
-                  {changeCate >= 0 ? 
-                  <>
-                    <i className="fa-solid fa-arrow-up"></i>
-                    <span className="number-up">{changeCate}%</span> 
-                  </> : 
-                  <>
-                    <i className="fa-solid fa-arrow-down"></i>
-                    <span className="number-down">{changeCate}%</span>
-                  </>
+                  {changeCate >= 0 ?
+                    <>
+                      <i className="fa-solid fa-arrow-up"></i>
+                      <span className="number-up">{changeCate}%</span>
+                    </> :
+                    <>
+                      <i className="fa-solid fa-arrow-down"></i>
+                      <span className="number-down">{changeCate}%</span>
+                    </>
                   }
                 </div>
               </div>
@@ -246,9 +252,9 @@ export default function Home() {
               }
             </div>
             <div className="flex-noted">
-            {
+              {
                 COLORS.map((item, index) => (
-                  <div key={index}className='noted-colors' style={{backgroundColor: item}}></div>
+                  <div key={index} className='noted-colors' style={{ backgroundColor: item }}></div>
                 ))
               }
             </div>
