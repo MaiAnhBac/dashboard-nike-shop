@@ -10,7 +10,6 @@ export default function ProductDetails() {
     const userLogin = JSON.parse(localStorage.getItem('user')) || null;
     const {id} = useParams()
     const [details, setDetails] = useState([])
-    console.log(details.images[0]);
     useEffect(() => {
         getProductsByDetails(id)
             .then((details) => {
