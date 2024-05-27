@@ -4,7 +4,7 @@ import { getAllUser, deleteUser, postAddNewUser } from '../../data/API'
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 export default function User() {
     const userLogin = JSON.parse(localStorage.getItem('user')) || null;
     const navigate = useNavigate();
@@ -45,7 +45,7 @@ export default function User() {
     }
     const onSubmitUser = async (e) => {
         setLoading(true)
-        setTimeout( async () => {
+        setTimeout(async () => {
             await postAddNewUser(name, email, images, password, role)
                 .then(() => {
                     toast.success("User added successfully")
@@ -103,7 +103,7 @@ export default function User() {
                     toast.error("Another error has occurred");
                 }
             })
-            
+
     }
     useEffect(() => {
         getAllUser()
@@ -116,11 +116,11 @@ export default function User() {
     }, [])
     useEffect(() => {
         if (userLogin && userLogin.role === 'admin') {
-          navigate('/user')
+            navigate('/user')
         } else {
-          navigate('/')
+            navigate('/')
         }
-      }, [navigate]);
+    }, [navigate]);
     return (
         <Layout>
             <div className="topbar">
@@ -141,11 +141,11 @@ export default function User() {
                     <div className="used-vertical"></div>
                     <div className="used-right">
                         <div className='used_right_img'>
-                            <img src={userLogin.avatar} alt="" className='img_user' />
+                            <img src={userLogin?.avatar} alt="" className='img_user' />
                         </div>
                         <div className="used_right_name">
                             <span className="welcome" id="welcome">{userLogin?.name}</span>
-                            <p className="role">{userLogin.role}</p>
+                            <p className="role">{userLogin?.role}</p>
                         </div>
                     </div>
                 </div>
@@ -219,7 +219,9 @@ export default function User() {
                                         <td className="sex">{users.creationAt.split('T')[0]}</td>
                                         <td className="date">{users.updatedAt.split('T')[0]}</td>
                                         <td className="feature">
-                                            <button className="btn edit" title="Chỉnh sửa" onClick={onClickAction}><i className="fa-solid fa-pencil"></i></button>
+                                            <Link to={`/edit_uses/${users.id}`}>
+                                                <button className="btn edit" title="Chỉnh sửa"><i className="fa-solid fa-pencil"></i></button>
+                                            </Link>
                                             <button className="btn close" title="Xóa" onClick={() => onDeleteUser(users.id)}><i className="far fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
@@ -233,7 +235,7 @@ export default function User() {
                                 <span className="total-page">Showing {user.length} of {user.length} Results</span>
                             </div>
                             <div className="pages">
-                                
+
                             </div>
                         </div>
                     </div>

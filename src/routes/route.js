@@ -7,6 +7,7 @@ import User from '../pages/User/User';
 import Error404 from '../pages/Error404/Error404';
 import ProductDetails from '../pages/Product/ProductDetails/ProductDetails';
 import Order from '../pages/Order/Order';
+import Edit_User from '../pages/User/Edit_User/Edit_User';
 const publicRoutes = [
     {path: '/', component: Login},
     {path: '/product', component: Product},
@@ -16,7 +17,8 @@ const publicRoutes = [
     {path: '/user', component: User},
     {path: '/error404', component: Error404},
     {path: '/product_details/:id', component: ProductDetails},
-    {path: '/order', component: Order}
+    {path: '/order', component: Order},
+    {path: '/edit_uses/:id', component: Edit_User}
 ]
 
 const privateRoutes = []

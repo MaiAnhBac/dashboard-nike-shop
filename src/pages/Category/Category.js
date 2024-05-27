@@ -70,11 +70,11 @@ export default function Category() {
                     <div className="used-vertical"></div>
                     <div className="used-right">
                         <div className='used_right_img'>
-                            <img src={userLogin.avatar} alt="" className='img_user' />
+                            <img src={userLogin?.avatar} alt="" className='img_user' />
                         </div>
                         <div className="used_right_name">
                             <span className="welcome" id="welcome">{userLogin?.name}</span>
-                            <p className="role">{userLogin.role}</p>
+                            <p className="role">{userLogin?.role}</p>
                         </div>
                     </div>
                 </div>

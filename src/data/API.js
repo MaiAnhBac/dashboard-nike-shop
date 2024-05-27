@@ -170,3 +170,9 @@ export const getProductsByDetails = (id) => {
             .then(res => res.json())
     )
 };
+export const getUsersById = (id) => {
+    return (
+        fetch(`https://api.escuelajs.co/api/v1/users/${id}`)
+            .then(res => res.json())
+    )
+};
