@@ -29,6 +29,8 @@ export default function Product() {
     const [lowHight, setLowHight] = useState('default')
     const [active, setActive] = useState(false);
     const [loading, setLoading] = useState(false)
+    const [confirmDelete, setConfirmDelete] = useState(false)
+    const [deleted, setDeleted] = useState(null)
     const onAddProduct = (e) => {
         setActive(!active)
     }
@@ -105,21 +107,34 @@ export default function Product() {
             })
     }
     const onDeleteProduct = (id) => {
-        deleteProduct(id)
-            .then(() => {
-                toast.success("Product deletion successful")
-                getAllProducts()
-                    .then((data) => {
-                        setData(data);
-                    })
-            })
-            .catch(error => {
-                if (error.message.includes('401')) {
-                    toast.error("User deletion failed!");
-                } else {
-                    toast.error("Another error has occurred");
-                }
-            })
+        setConfirmDelete(true)
+        setDeleted(id)
+    }
+    const onConfirmDelete = () => {
+        if (deleted != null) {
+            deleteProduct(deleted)
+                .then(() => {
+                    toast.success("Product deletion successful")
+                    getProductsByLimit(0, limit)
+                        .then((offset) => {
+                            setData(offset)
+                        })
+                })
+                .catch(error => {
+                    if (error.message.includes('401')) {
+                        toast.error("User deletion failed!");
+                    } else {
+                        toast.error("Another error has occurred");
+                    }
+                })
+        }
+        setConfirmDelete(false)
+        setDeleted(null)
+
+    }
+    const onConfirmCancel = () => {
+        setConfirmDelete(false)
+        setDeleted(null)
     }
     const onChangeLowHight = (e) => {
         setLowHight(e.target.value);
@@ -356,6 +371,21 @@ export default function Product() {
                                 </button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+            <div className={confirmDelete ? "confirm-delete delete-open" : "confirm-delete"}>
+                <div className="delete-container ">
+                    <div className="detete-icon">
+                        <i className="fa-solid fa-trash-can"></i>
+                    </div>
+                    <div className="delete-title">
+                        <h3 className="delete-h3">Delete 1 item from all your products</h3>
+                        <p className="delete-p">This item will be removed from your Product Management</p>
+                    </div>
+                    <div className="delete-button">
+                        <button type="button" className='delete-btn' onClick={onConfirmCancel}>Cancel</button>
+                        <button type="button" className='delete-btn de-red' onClick={onConfirmDelete}>Delete</button>
                     </div>
                 </div>
             </div>

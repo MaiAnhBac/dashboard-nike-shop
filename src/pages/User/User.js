@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
+import './User.css'
 export default function User() {
     const userLogin = JSON.parse(localStorage.getItem('user')) || null;
     const navigate = useNavigate();
@@ -17,11 +18,10 @@ export default function User() {
     const [images, setImages] = useState()
     const [active, setActive] = useState(false);
     const [loading, setLoading] = useState(false)
+    const [confirmDelete, setConfirmDelete] = useState(false)
+    const [deleted, setDeleted] = useState(null)
     const onAddUser = () => {
         setActive(!active)
-    }
-    const onClickAction = () => {
-        toast.warn("Feature under development!")
     }
     const onClickRefresh = (e) => {
         e.preventDefault();
@@ -88,22 +88,34 @@ export default function User() {
         uploadAvatar();
     }
     const onDeleteUser = (id) => {
-        deleteUser(id)
-            .then(() => {
-                toast.success("Delete user successfully");
-                getAllUser()
-                    .then((user) => {
-                        setUser(user);
-                    })
-            })
-            .catch(error => {
-                if (error.message.includes('401')) {
-                    toast.error("User deletion failed!");
-                } else {
-                    toast.error("Another error has occurred");
-                }
-            })
+        setConfirmDelete(true)
+        setDeleted(id)
+    }
+    const onConfirmDelete = () => {
+        if (deleted != null) {
+            deleteUser(deleted)
+                .then(() => {
+                    toast.success("Delete user successfully");
+                    getAllUser()
+                        .then((user) => {
+                            setUser(user);
+                        })
+                })
+                .catch(error => {
+                    if (error.message.includes('401')) {
+                        toast.error("User deletion failed!");
+                    } else {
+                        toast.error("Another error has occurred");
+                    }
+                })
+        }
+        setConfirmDelete(false)
+        setDeleted(null)
 
+    }
+    const onConfirmCancel = () => {
+        setConfirmDelete(false)
+        setDeleted(null)
     }
     useEffect(() => {
         getAllUser()
@@ -282,6 +294,21 @@ export default function User() {
                                 </button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+            <div className={confirmDelete ? "confirm-delete delete-open" : "confirm-delete"}>
+                <div className="delete-container ">
+                    <div className="detete-icon">
+                        <i className="fa-solid fa-trash-can"></i>
+                    </div>
+                    <div className="delete-title">
+                        <h3 className="delete-h3">Delete 1 item from all your users</h3>
+                        <p className="delete-p">This item will be removed from your User Management</p>
+                    </div>
+                    <div className="delete-button">
+                        <button type="button" className='delete-btn' onClick={onConfirmCancel}>Cancel</button>
+                        <button type="button" className='delete-btn de-red' onClick={onConfirmDelete}>Delete</button>
                     </div>
                 </div>
             </div>

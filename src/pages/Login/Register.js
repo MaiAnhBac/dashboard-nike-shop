@@ -51,7 +51,7 @@ export default function Register() {
                 </form>
                 <div className="with">
                     <div className="with-account register-mt">
-                        <p className="account">Don't have an account ?
+                        <p className="account">Do you already have an account?
                             <NavLink to="/" className="sign-up">Sign In</NavLink>
                         </p>
                     </div>

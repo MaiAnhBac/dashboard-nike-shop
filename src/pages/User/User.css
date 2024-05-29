@@ -1,0 +1,64 @@
+.confirm-delete {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.delete-open {
+    display: flex;
+}
+.delete-container {
+    width: 400px;
+    min-height: 200px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    animation: deleteFaleIn ease .5s;
+}
+@keyframes deleteFaleIn {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.detete-icon {
+    text-align: center;
+    font-size: 25px;
+    padding-top: 10px;
+    color: #ff7a78;
+}
+.delete-title {
+    text-align: center;
+    margin-top: 10px;
+}
+.delete-p {
+    font-size: 13px;
+    margin-top: 10px;
+    color: #949393;
+}
+.delete-button {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+.delete-btn {
+    width: 100%;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    color: black;
+    height: 30px;
+    cursor: pointer;
+}
+.de-red {
+    color: #ff7a78;
+}
