@@ -118,6 +118,7 @@ export default function Product() {
                     getProductsByLimit(0, limit)
                         .then((offset) => {
                             setData(offset)
+                            setPage(1)
                         })
                 })
                 .catch(error => {
