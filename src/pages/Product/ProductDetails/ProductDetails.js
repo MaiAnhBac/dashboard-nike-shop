@@ -43,7 +43,7 @@ export default function ProductDetails() {
                         </div>
                         <div className="used-left-bell">
                             <ul>
-                                <li>
+                                <li className='bell-brg'>
                                     <span className='bell-top'>Notification</span>
                                     <a href="" className='bell-view-all'>View All</a>
                                 </li>
