@@ -196,44 +196,6 @@ export default function Product() {
     }, [navigate]);
     return (
         <Layout>
-            <div className="topbar">
-                <div className="toggle">
-                    <i className="fa-solid fa-bars"></i>
-                </div>
-                <div className="search">
-                    <h3>PRODUCT MANAGEMENT</h3>
-                </div>
-                <div className="used">
-                    <div className="used-left">
-                        <div className="used-left-icon">
-                            <i className="fa-regular fa-bell"></i>
-                            <div className="bell-2">0</div>
-                        </div>
-                        <div className="used-left-bell">
-                            <ul>
-                                <li className='bell-brg'>
-                                    <span className='bell-top'>Notification</span>
-                                    <a href="" className='bell-view-all'>View All</a>
-                                </li>
-                                <li><a href="" className='bell-notification'>Không có thông báo</a></li>
-                                <li><a href=""></a></li>
-                                <li><a href=""></a></li>
-                                <li><a href=""></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="used-vertical"></div>
-                    <div className="used-right">
-                        <div className='used_right_img'>
-                            <img src={userLogin?.avatar} alt="" className='img_user' />
-                        </div>
-                        <div className="used_right_name">
-                            <span className="welcome" id="welcome">{userLogin?.name}</span>
-                            <p className="role">{userLogin?.role}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div className="bottombar">
                 <div className="product-item-1">
                     <h3 className="product-title">PRODUCTS</h3>

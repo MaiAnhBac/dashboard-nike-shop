@@ -7,7 +7,6 @@ import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
 import './User.css'
 export default function User() {
-    const userLogin = JSON.parse(localStorage.getItem('user')) || null;
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors }, } = useForm();
     const [user, setUser] = useState([]);
@@ -127,6 +126,7 @@ export default function User() {
             });
     }, [])
     useEffect(() => {
+        const userLogin = JSON.parse(localStorage.getItem('user')) || null;
         if (userLogin && userLogin.role === 'admin') {
             navigate('/user')
         } else {
@@ -135,44 +135,6 @@ export default function User() {
     }, [navigate]);
     return (
         <Layout>
-            <div className="topbar">
-                <div className="toggle">
-                    <i className="fa-solid fa-bars"></i>
-                </div>
-                <div className="search">
-                    <h3>USER MANAGEMENT</h3>
-                </div>
-                <div className="used">
-                    <div className="used-left">
-                        <div className="used-left-icon">
-                            <i className="fa-regular fa-bell"></i>
-                            <div className="bell-2">0</div>
-                        </div>
-                        <div className="used-left-bell">
-                            <ul>
-                                <li className='bell-brg'> 
-                                    <span className='bell-top'>Notification</span>
-                                    <a href="" className='bell-view-all'>View All</a>
-                                </li>
-                                <li><a href="" className='bell-notification'>Không có thông báo</a></li>
-                                <li><a href=""></a></li>
-                                <li><a href=""></a></li>
-                                <li><a href=""></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="used-vertical"></div>
-                    <div className="used-right">
-                        <div className='used_right_img'>
-                            <img src={userLogin?.avatar} alt="" className='img_user' />
-                        </div>
-                        <div className="used_right_name">
-                            <span className="welcome" id="welcome">{userLogin?.name}</span>
-                            <p className="role">{userLogin?.role}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div className="bottombar">
                 <div className="product-item-1">
                     <h3 className="product-title">USER</h3>

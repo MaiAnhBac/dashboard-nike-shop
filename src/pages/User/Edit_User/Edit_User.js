@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import Layout from '../../../components/Layout'
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { getUsersById } from '../../../data/API'
 export default function Edit_User() {
     const userLogin = JSON.parse(localStorage.getItem('user')) || null;
     const { id } = useParams()
+    const navigate = useNavigate();
     const [users, setUsers] = useState([])
     const [button, setButton] = useState(false)
     const onclickButton = () => {
@@ -16,46 +17,13 @@ export default function Edit_User() {
                 setUsers(user);
             })
     }, [])
+    useEffect(() => {
+        if (!userLogin) {
+            navigate('/')
+        }
+    }, [navigate]);
     return (
         <Layout>
-            <div className="topbar">
-                <div className="toggle">
-                    <i className="fa-solid fa-bars"></i>
-                </div>
-                <div className="search">
-                    <h3>EDIT USERS</h3>
-                </div>
-                <div className="used">
-                    <div className="used-left">
-                        <div className="used-left-icon">
-                            <i className="fa-regular fa-bell"></i>
-                            <div className="bell-2">0</div>
-                        </div>
-                        <div className="used-left-bell">
-                            <ul>
-                                <li className='bell-brg'>
-                                    <span className='bell-top'>Notification</span>
-                                    <a href="" className='bell-view-all'>View All</a>
-                                </li>
-                                <li><a href="" className='bell-notification'>Không có thông báo</a></li>
-                                <li><a href=""></a></li>
-                                <li><a href=""></a></li>
-                                <li><a href=""></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="used-vertical"></div>
-                    <div className="used-right">
-                        <div className='used_right_img'>
-                            <img src={userLogin.avatar} alt="" className='img_user' />
-                        </div>
-                        <div className="used_right_name">
-                            <span className="welcome" id="welcome">{userLogin?.name}</span>
-                            <p className="role">{userLogin.role}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div className="bottombar">
                 <div className="product-item-1">
                     <h3 className="product-title">EDIT USERS</h3>

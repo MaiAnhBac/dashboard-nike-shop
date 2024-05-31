@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, Radar } from 'recharts';
+import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import Layout from '../../components/Layout'
 import Radar_Chart from './Radar_Chart';
 import Bar_Chart from './Bar_Chart';
 import './Home.css';
-import './Dark-mode.css'
 import '../style/Responsive.css'
 import { getAllUser, getAllCategory, getAllProducts } from '../../data/API'
 import { useNavigate } from 'react-router-dom';
@@ -80,44 +79,6 @@ export default function Home() {
   return (
 
     <Layout>
-      <div className="topbar">
-        <div className="toggle">
-          <i className="fa-solid fa-bars"></i>
-        </div>
-        <div className="search">
-          <h3 data-en="OVERVIEW" data-vi="TỔNG QUAN">Dashboard</h3>
-        </div>
-        <div className="used">
-          <div className="used-left">
-              <div className="used-left-icon">
-                <i className="fa-regular fa-bell"></i>
-                <div className="bell-2">0</div>
-              </div>
-              <div className="used-left-bell">
-                <ul>
-                  <li className='bell-brg'>
-                    <span className='bell-top'>Notification</span>
-                    <a href="" className='bell-view-all'>View All</a>
-                  </li>
-                  <li><a href="" className='bell-notification'>Không có thông báo</a></li>
-                  <li><a href=""></a></li>
-                  <li><a href=""></a></li>
-                  <li><a href=""></a></li>
-                </ul>
-              </div>
-          </div>
-          <div className="used-vertical"></div>
-          <div className="used-right">
-            <div className='used_right_img'>
-              <img src={userLogin?.avatar} alt="" className='img_user' />
-            </div>
-            <div className="used_right_name">
-              <span className="welcome" id="welcome">{userLogin?.name}</span>
-              <p className="role">{userLogin?.role}</p>
-            </div>
-          </div>
-        </div>
-      </div>
       <div className="real">
         <div className="real-top">
           <div className="real-item-1">
