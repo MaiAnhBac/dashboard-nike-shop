@@ -46,6 +46,7 @@
   transform: scaleY(0);
   transition: transform ease 1s;
   border-radius: 5px;
+  border: 1px solid #DDE7EE;
 }
 .used-left:hover .used-left-bell {
   overflow: visible;

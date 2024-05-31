@@ -71,8 +71,9 @@
     color: var(--white);
     font-size: 14px;
     padding: 10px 15px;
+    font-weight: 600;
 }
-.filter .filter-right .add .add-sv .fa-circle-plus {
+.filter .filter-right .add .add-sv .fa-plus {
     margin-right: 10px;
 }
 .filter-mid {

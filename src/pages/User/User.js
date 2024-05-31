@@ -169,7 +169,7 @@ export default function User() {
                                 <button className='refresh' onClick={onClickRefresh}><i className="fa-solid fa-arrows-rotate"></i></button>
                             </div>
                             <div className="add">
-                                <a className="add-sv" onClick={onAddUser}><i className="fa-solid fa-circle-plus"></i>Add User</a>
+                                <a className="add-sv" onClick={onAddUser}><i className="fa-solid fa-plus"></i>New User</a>
                             </div>
                         </div>
                     </div>

@@ -237,7 +237,7 @@ export default function Product() {
                                 <button className="refresh" onClick={onClickRefresh}><i className="fa-solid fa-arrows-rotate"></i></button>
                             </div>
                             <div className="add">
-                                <a className="add-sv" onClick={onAddProduct}><i className="fa-solid fa-circle-plus"></i>Add Product</a>
+                                <a className="add-sv" onClick={onAddProduct}><i className="fa-solid fa-plus"></i>New Product</a>
                             </div>
                         </div>
                     </div>

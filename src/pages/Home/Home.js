@@ -7,6 +7,10 @@ import './Home.css';
 import '../style/Responsive.css'
 import { getAllUser, getAllCategory, getAllProducts } from '../../data/API'
 import { useNavigate } from 'react-router-dom';
+import buy from '../../images/ic_glass_buy.png'
+import bag from '../../images/ic_glass_bag.png'
+import users from '../../images/ic_glass_users.png'
+import order from '../../images/ic_glass_message.png'
 const piechart = [
   { name: 'Packed', value: 400 },
   { name: 'Dispatched', value: 300 },
@@ -112,7 +116,9 @@ export default function Home() {
                 </div>
               </div>
               <div className="row-right">
-                <div className="progress orange"></div>
+                <div className="row-right-img">
+                  <img src={bag} alt="" className='img-dashboard' />
+                </div>
               </div>
             </div>
             <div className="real-item-row">
@@ -137,7 +143,9 @@ export default function Home() {
                 </div>
               </div>
               <div className="row-right">
-                <div className="progress light"></div>
+                <div className="row-right-img">
+                  <img src={users} alt="" className='img-dashboard' />
+                </div>
               </div>
             </div>
             <div className="real-item-row">
@@ -162,7 +170,9 @@ export default function Home() {
                 </div>
               </div>
               <div className="row-right">
-                <div className="progress siena"></div>
+                <div className="row-right-img">
+                  <img src={order} alt="" className='img-dashboard' />
+                </div>
               </div>
             </div>
             <div className="real-item-row">
@@ -179,7 +189,9 @@ export default function Home() {
                 </div>
               </div>
               <div className="row-right">
-                <div className="progress deep"></div>
+                <div className="row-right-img">
+                  <img src={buy} alt="" className='img-dashboard' />
+                </div>
               </div>
             </div>
           </div>
@@ -212,15 +224,11 @@ export default function Home() {
             </div>
             <div className="flex-noted">
               {
-                piechart.map((item, index) => (
-                  <p key={index}>{item.name}</p>
-                ))
-              }
-            </div>
-            <div className="flex-noted">
-              {
-                COLORS.map((item, index) => (
-                  <div key={index} className='noted-colors' style={{ backgroundColor: item }}></div>
+                Array.from({ length: Math.max(piechart.length, COLORS.length) }).map((_, index) => (
+                  <React.Fragment key={index}>
+                    {index < COLORS.length && <div className="noted-colors" style={{ backgroundColor: COLORS[index] }}></div>}
+                    {index < piechart.length && <p>{piechart[index].name}</p>}
+                  </React.Fragment>
                 ))
               }
             </div>

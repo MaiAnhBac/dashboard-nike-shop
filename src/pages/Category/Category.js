@@ -88,7 +88,7 @@ export default function Category() {
                                 <button className='refresh' onClick={onClickRefresh}><i className="fa-solid fa-arrows-rotate"></i></button>
                             </div>
                             <div className="add">
-                                <a href="" className="add-sv"><i className="fa-solid fa-circle-plus"></i>Add Category</a>
+                                <a href="" className="add-sv"><i className="fa-solid fa-plus"></i>New Category</a>
                             </div>
                         </div>
                     </div>

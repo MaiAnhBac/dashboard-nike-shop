@@ -52,7 +52,7 @@ export default function Order() {
                                 <button className='refresh' ><i className="fa-solid fa-arrows-rotate"></i></button>
                             </div>
                             <div className="add">
-                                <a className="add-sv" ><i className="fa-solid fa-circle-plus"></i>Add Order</a>
+                                <a className="add-sv" ><i className="fa-solid fa-plus"></i>New Order</a>
                             </div>
                         </div>
                     </div>
