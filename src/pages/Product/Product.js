@@ -150,10 +150,10 @@ export default function Product() {
                 return b.price - a.price;
             }
             else {
-                return getAllProducts()
-                    .then((data) => {
-                        setData(data);
-                    })
+                return getProductsByLimit(0, limit)
+                            .then((offset) => {
+                                setData(offset)
+                            })
             }
         });
     }
