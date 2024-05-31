@@ -11,7 +11,7 @@
   background: #f4f2f2;
   cursor: pointer;
 }
-.used-left-icon:hover {
+.used-left-icon:hover .fa-bell {
   animation: bellRing 0.9s both;
 }
 .bell-2 {
