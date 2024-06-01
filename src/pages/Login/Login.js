@@ -81,8 +81,8 @@ export default function Login() {
               <label htmlFor="password">Password <span className="red">*</span></label>
               <div className="form-input">
                 <input type="password" placeholder="Password của bạn" id="password" className="input-login" required value={password} onChange={onChangePassword} />
-                <i className="fa-regular fa-eye" onClick={changTypePass}></i>
-                <i className="fa-regular fa-eye-slash" onClick={changTypePass}></i>
+                <i className="fa-regular fa-eye view" onClick={changTypePass}></i>
+                <i className="fa-regular fa-eye-slash view" onClick={changTypePass}></i>
               </div>
             </div>
             <div className="remember">
