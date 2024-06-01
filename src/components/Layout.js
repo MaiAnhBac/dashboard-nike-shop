@@ -42,8 +42,8 @@ const notification = [
   },
   {
     id: 7,
-    notification: "Just updated the Pie chart of the Product page!",
-    address: '/product',
+    notification: "Just updated the Pie chart of the Dashboard page!",
+    address: '/home',
     updateAt: '1 day ago'
   },
 ]
