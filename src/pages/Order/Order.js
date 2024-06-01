@@ -10,7 +10,7 @@ export default function Order() {
     }
     useEffect(() => {
         const userLogin = JSON.parse(localStorage.getItem('user')) || null;
-        if (userLogin && userLogin.role === 'admin') {
+        if (userLogin) {
             navigate('/order')
         } else {
             navigate('/')
