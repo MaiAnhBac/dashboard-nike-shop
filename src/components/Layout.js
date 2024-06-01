@@ -24,7 +24,7 @@ const notification = [
   },
   {
     id: 4,
-    notification: "Just updated the images of the User page!",
+    notification: "Just updated the Order page feature!",
     address: '/user',
     updateAt: 'about 2 hours ago'
   },
