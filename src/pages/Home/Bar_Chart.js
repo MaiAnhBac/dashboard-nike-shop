@@ -84,7 +84,7 @@ export default function Bar_Chart() {
                 margin={{
                     top: 10,
                     right: 10,
-                    left: 0,
+                    left: -10,
                     bottom: 20,
                 }}
             >
