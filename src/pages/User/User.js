@@ -180,7 +180,6 @@ export default function User() {
                             <thead className="td">
                                 <tr>
                                     <th>id</th>
-                                    <th>Image</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Password</th>
@@ -194,10 +193,12 @@ export default function User() {
                                 {user.map((users) => (
                                     <tr key={users.id}>
                                         <td className="stt">{users.id}</td>
-                                        <td className="img">
-                                            <img src={users.avatar} width={30} height={30} alt="" />
+                                        <td className="name">
+                                            <div className="name-flex">
+                                                <span className='img'><img src={users.avatar} width={30} height={30} alt="" /></span>
+                                                {users.name}
+                                            </div>
                                         </td>
-                                        <td className="name">{users.name}</td>
                                         <td className="email">{users.email}</td>
                                         <td className="password">{users.password}</td>
                                         <td className="password">{users.role}</td>

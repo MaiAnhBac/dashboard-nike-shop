@@ -160,6 +160,14 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+  .content-table td .name-flex {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .content-table td .img img  {
+    border-radius: 50%;
+  }
   .content-table tbody tr {
     border-bottom: 1px solid #dddddd;
     border-color: inherit;
