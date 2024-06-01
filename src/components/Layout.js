@@ -6,7 +6,7 @@ import Footer from './Footer';
 const notification = [
   {
     id: 1,
-    notification: "Update new product page!",
+    notification: "Update new Product page!",
     address: '/product',
     updateAt: 'about 4 hours ago'
   },
