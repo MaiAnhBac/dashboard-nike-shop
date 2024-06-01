@@ -6,43 +6,43 @@ import Footer from './Footer';
 const notification = [
   {
     id: 1,
-    notification: "Mới cập nhật trang Product!",
+    notification: "Update new product page!",
     address: '/product',
     updateAt: 'about 4 hours ago'
   },
   {
     id: 2,
-    notification: "Mới cập nhật trang Dashboard!",
+    notification: "Just updated the Dashboard page!",
     address: '/home',
     updateAt: '1 day ago'
   },
   {
     id: 3,
-    notification: "Mới cập nhật images của trang User!",
+    notification: "Just updated the images of the User page!",
     address: '/user',
     updateAt: 'about 1 hours ago'
   },
   {
     id: 4,
-    notification: "Mới cập nhật images của trang User!",
+    notification: "Just updated the images of the User page!",
     address: '/user',
     updateAt: 'about 2 hours ago'
   },
   {
     id: 5,
-    notification: "Mới cập nhật thêm hộp thư thoại xác nhận Delete trang Product!",
+    notification: "Just updated the Delete confirmation voicemail box on the Product page!",
     address: '/product',
     updateAt: 'about 7 hours ago'
   },
   {
     id: 6,
-    notification: "Mới cập nhật thêm hộp thư thoại xác nhận Delete trang User!",
+    notification: "Just updated the Delete confirmation voicemail box on the User page!",
     address: '/user',
     updateAt: '1 day ago'
   },
   {
     id: 7,
-    notification: "Mới cập nhật biểu đồ Pie của trang Product!",
+    notification: "Just updated the Pie chart of the Product page!",
     address: '/product',
     updateAt: '1 day ago'
   },
