@@ -71,11 +71,11 @@ export default function Layout({ children }) {
                 <div className="bell-2">{notification.length}</div>
               </div>
               <div className={bell ? "used-left-bell bell-active" : "used-left-bell"}>
-                <ul>
-                  <li className='bell-brg'>
+                <li className='bell-brg'>
                     <span className='bell-top'>Notification</span>
                     <a href="" className='bell-view-all'>View All</a>
-                  </li>
+                </li>
+                <ul>
                   {notification.map((item) => (
                     <li className='bell-item' key={item.id}>
                       <a href={item.address} className='bell-notification'>{item.notification}</a>

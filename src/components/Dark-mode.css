@@ -36,8 +36,6 @@
   left: -200px;
   top: 50px;
   width: 300px;
-  max-height: 700px;
-  height: auto;
   background: #fff;
   overflow: hidden;
   opacity: 0;
@@ -56,6 +54,19 @@
 }
 .used-left-bell ul {
   list-style: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 400px;
+  height: auto;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(207, 207, 207); 
+  border-radius: 5px;
 }
 .used-left-bell ul li {
   padding: 10px;
@@ -68,11 +79,13 @@
   background-color: rgba(145, 158, 171, 0.08);
 }
 .bell-brg {
+  display: flex;
+  padding: 10px;
   background: #f0f0f0;
   justify-content: space-between;
   align-items: center;
 }
-.used-left-bell ul li .bell-top {
+.used-left-bell li .bell-top {
   font-weight: 600;
 }
 .bell-view-all {
